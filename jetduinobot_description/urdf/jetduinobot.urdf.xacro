@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!--
+  The complete jetduinobot library of xacros for easy reference
+ -->
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+  <!-- General -->
+  <xacro:include filename="$(find jetduinobot_description)/urdf/common_properties.urdf.xacro"/>
+  <xacro:include filename="$(find jetduinobot_description)/urdf/jetduinobot_properties.urdf.xacro"/>
+  <!-- Bases -->
+  <xacro:include filename="$(find jetduinobot_description)/urdf/dfrobot_4wd.urdf.xacro"/>
+  <!-- Stacks -->
+  <!-- 3D Sensors -->
+</robot>

@@ -20,6 +20,4 @@
 
   <run_depend>urdf</run_depend>
   <run_depend>xacro</run_depend>
-  <run_depend>kobuki_description</run_depend>
-  <run_depend>create_description</run_depend>
 </package>

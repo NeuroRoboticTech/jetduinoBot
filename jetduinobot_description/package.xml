@@ -6,8 +6,8 @@
   The files in this package are parsed and used by a variety of other components. Most users will not interact directly with this package.
   </description>
   <author>David Cofer</author>
-  <author email="dcofer@NeuroRoboticTech.com">Daniel Stonier</author>
-  <maintainer email="dcofer@NeuroRoboticTech.com">Daniel Stonier</maintainer>
+  <author email="dcofer@NeuroRoboticTech.com">David Cofer</author>
+  <maintainer email="dcofer@NeuroRoboticTech.com">David Cofer</maintainer>
   <license>MIT</license>
   <url type="website">http://ros.org/wiki/jetduinobot_description</url>
   <url type="repository">https://github.com/NeuroRoboticTech/jetduinoBot</url>

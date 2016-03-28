@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<robot name="jetduino_bot" xmlns:xacro="http://ros.org/wiki/xacro">
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
 
   <link name="world_link" />
 
@@ -8,9 +8,7 @@
       <geometry>
         <box size="0.225 0.185 0.15"/>
       </geometry>
-      <material name="silver">
-        <color rgba="0.75 0.75 0.75 1"/>
-      </material>
+      <material name="silver" />
     </visual>
     <collision>
       <geometry>
@@ -29,20 +27,18 @@
     <origin rpy="0 0 0" xyz="0 0 0"/>
   </joint>
 
+
   <!-- rear wheels -->
   <!-- right rear wheel -->
   <link name="right_rear_wheel_link">
     <visual>
       <geometry>
-        <cylinder length="0.025" radius="0.0325"/>
+        <mesh filename="$(find jetduinobot_description)/meshes/wheel.dae"/>
       </geometry>
-      <material name="black">
-        <color rgba="0 0 0 1"/>
-      </material>
     </visual>
     <collision>
       <geometry>
-        <cylinder length="0.025" radius="0.0325"/>
+        <cylinder length="0.025" radius="0.029"/>
       </geometry>
     </collision>
     <inertial>
@@ -62,13 +58,13 @@
   <link name="left_rear_wheel_link">
     <visual>
       <geometry>
-        <cylinder length="0.025" radius="0.0325"/>
+        <mesh filename="$(find jetduinobot_description)/meshes/wheel.dae"/>
       </geometry>
       <material name="black"/>
     </visual>
     <collision>
       <geometry>
-        <cylinder length="0.025" radius="0.0325"/>
+        <cylinder length="0.025" radius="0.029"/>
       </geometry>
     </collision>
     <inertial>
@@ -90,13 +86,13 @@
   <link name="right_front_wheel_link">
     <visual>
       <geometry>
-        <cylinder length="0.025" radius="0.0325"/>
+        <mesh filename="$(find jetduinobot_description)/meshes/wheel.dae"/>
       </geometry>
       <material name="black"/>
     </visual>
     <collision>
       <geometry>
-        <cylinder length="0.025" radius="0.0325"/>
+        <cylinder length="0.025" radius="0.029"/>
       </geometry>
     </collision>
     <inertial>
@@ -116,13 +112,13 @@
   <link name="left_front_wheel_link">
     <visual>
       <geometry>
-        <cylinder length="0.025" radius="0.0325"/>
+        <mesh filename="$(find jetduinobot_description)/meshes/wheel.dae"/>
       </geometry>
       <material name="black"/>
     </visual>
     <collision>
       <geometry>
-        <cylinder length="0.025" radius="0.0325"/>
+        <cylinder length="0.025" radius="0.029"/>
       </geometry>
     </collision>
     <inertial>

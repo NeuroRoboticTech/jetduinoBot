@@ -2516,7 +2516,7 @@
             <init_from>jetson_tk1/jetson_tk1_Top_0.JPG</init_from>
         </image>
         <image id="ID23">
-            <init_from>jetson_tk1/jetson_tk11_Bottom.JPG</init_from>
+            <init_from>jetson_tk1/jetson_tk1_Bottom.JPG</init_from>
         </image>
         <image id="ID36">
             <init_from>jetson_tk1/jetson_tk1_Power.JPG</init_from>

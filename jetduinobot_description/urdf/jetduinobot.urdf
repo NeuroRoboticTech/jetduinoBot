@@ -20,13 +20,16 @@
   <link name="base_link">
     <visual>
       <geometry>
-        <box size="0.225 0.185 0.15"/>
+        <mesh filename="package://jetduinobot_description/meshes/chassis.dae" scale="0.1 0.1 0.1"/>
       </geometry>
-      <material name="silver"/>
+      <origin rpy="0 0 0" xyz="0 -0.01 -0.029"/>
+      <material name="silver">
+        <color rgba="0.75 0.75 0.75 1"/>
+      </material>
     </visual>
     <collision>
       <geometry>
-        <box size="0.225 0.185 0.15"/>
+        <box size="0.185 0.23 0.058"/>
       </geometry>
     </collision>
     <inertial>
@@ -44,7 +47,7 @@
   <link name="right_rear_wheel_link">
     <visual>
       <geometry>
-        <mesh filename="package://jetduinobot_description/meshes/wheel_tread.dae" scale="3 3 3"/>
+        <mesh filename="package://jetduinobot_description/meshes/wheel.dae" scale="0.1 0.1 0.1"/>
       </geometry>
     </visual>
     <collision>
@@ -67,7 +70,7 @@
   <link name="left_rear_wheel_link">
     <visual>
       <geometry>
-        <mesh filename="package://jetduinobot_description/meshes/wheel_tread.dae" />
+        <mesh filename="package://jetduinobot_description/meshes/wheel.dae" scale="0.1 0.1 0.1"/>
       </geometry>
       <material name="black"/>
     </visual>
@@ -92,7 +95,7 @@
   <link name="right_front_wheel_link">
     <visual>
       <geometry>
-        <mesh filename="package://jetduinobot_description/meshes/wheel_tread.dae" />
+        <mesh filename="package://jetduinobot_description/meshes/wheel.dae" scale="0.1 0.1 0.1"/>
       </geometry>
       <material name="black"/>
     </visual>
@@ -116,7 +119,7 @@
   <link name="left_front_wheel_link">
     <visual>
       <geometry>
-        <mesh filename="package://jetduinobot_description/meshes/wheel_tread.dae" scale="1 1 1"/>
+        <mesh filename="package://jetduinobot_description/meshes/wheel.dae" scale="0.1 0.1 0.1"/>
       </geometry>
       <material name="black"/>
     </visual>

@@ -5,8 +5,8 @@
       <author>Blender User</author>
       <authoring_tool>Blender 2.70.0 commit date:2014-04-10, commit time:11:49, hash:f93bc76</authoring_tool>
     </contributor>
-    <created>2016-04-02T17:44:07</created>
-    <modified>2016-04-02T17:44:07</modified>
+    <created>2016-04-02T17:57:06</created>
+    <modified>2016-04-02T17:57:06</modified>
     <unit name="meter" meter="1"/>
     <up_axis>Z_UP</up_axis>
   </asset>
@@ -339,14 +339,14 @@
     </effect>
     <effect id="motor_top_001-effect">
       <profile_COMMON>
-        <newparam sid="grove_motor_bottom_png-surface">
+        <newparam sid="grove_motor_top_png-surface">
           <surface type="2D">
-            <init_from>grove_motor_bottom_png</init_from>
+            <init_from>grove_motor_top_png</init_from>
           </surface>
         </newparam>
-        <newparam sid="grove_motor_bottom_png-sampler">
+        <newparam sid="grove_motor_top_png-sampler">
           <sampler2D>
-            <source>grove_motor_bottom_png-surface</source>
+            <source>grove_motor_top_png-surface</source>
           </sampler2D>
         </newparam>
         <technique sid="common">
@@ -358,7 +358,7 @@
               <color sid="ambient">0 0 0 1</color>
             </ambient>
             <diffuse>
-              <texture texture="grove_motor_bottom_png-sampler" texcoord="UVMap"/>
+              <texture texture="grove_motor_top_png-sampler" texcoord="UVMap"/>
             </diffuse>
             <specular>
               <color sid="specular">0.5 0.5 0.5 1</color>
@@ -1167,7 +1167,7 @@
   <library_visual_scenes>
     <visual_scene id="Scene" name="Scene">
       <node id="Cube_003" name="Cube_003" type="NODE">
-        <matrix sid="transform">0.04 0 0 -0.2368409 0 0.0390614 0 -0.123534 0 0 0.025 0.03091846 0 0 0 1</matrix>
+        <matrix sid="transform">-0.04 5.92926e-8 0 -0.2368409 -6.07174e-8 -0.0390614 0 -0.123534 0 0 0.025 0.03091846 0 0 0 1</matrix>
         <instance_geometry url="#Cube_003-mesh">
           <bind_material>
             <technique_common>
@@ -1182,7 +1182,7 @@
         </instance_geometry>
       </node>
       <node id="Cube_002" name="Cube_002" type="NODE">
-        <matrix sid="transform">0.04 0 0 -0.2353592 0 0.0390614 0 0.1337716 0 0 0.025 0.03091846 0 0 0 1</matrix>
+        <matrix sid="transform">-0.04 5.92926e-8 0 -0.2353592 -6.07174e-8 -0.0390614 0 0.1337716 0 0 0.025 0.03091846 0 0 0 1</matrix>
         <instance_geometry url="#Cube_002-mesh">
           <bind_material>
             <technique_common>

@@ -5,8 +5,8 @@
       <author>Blender User</author>
       <authoring_tool>Blender 2.70.0 commit date:2014-04-10, commit time:11:49, hash:f93bc76</authoring_tool>
     </contributor>
-    <created>2016-04-02T06:52:04</created>
-    <modified>2016-04-02T06:52:04</modified>
+    <created>2016-04-02T07:53:11</created>
+    <modified>2016-04-02T07:53:11</modified>
     <unit name="meter" meter="1"/>
     <up_axis>Z_UP</up_axis>
   </asset>
@@ -455,7 +455,7 @@
   <library_visual_scenes>
     <visual_scene id="Scene" name="Scene">
       <node id="Cylinder_001" name="Cylinder_001" type="NODE">
-        <matrix sid="transform">0.25 0 0 0 0 -0.25 2.49346e-7 0.007500006 0 -4.98693e-7 -0.125 -0.007499999 0 0 0 1</matrix>
+        <matrix sid="transform">0.25 0 0 0 0 -0.25 2.49346e-7 0 0 -4.98693e-7 -0.125 -0.007499999 0 0 0 1</matrix>
         <instance_geometry url="#Cylinder_001-mesh">
           <bind_material>
             <technique_common>
@@ -465,7 +465,7 @@
         </instance_geometry>
       </node>
       <node id="Sphere_001" name="Sphere_001" type="NODE">
-        <matrix sid="transform">-0.1869711 0.1407677 7.04339e-9 0 -0.1358422 -0.1937506 -1.57474e-8 0.007499933 -1.37931e-8 -6.78127e-8 0.05961356 0.0725 0 0 0 1</matrix>
+        <matrix sid="transform">-0.1869711 0.1407677 7.04339e-9 0 -0.1358422 -0.1937506 -1.57474e-8 0 -1.37931e-8 -6.78127e-8 0.05961356 0.0725 0 0 0 1</matrix>
         <instance_geometry url="#Sphere_001-mesh">
           <bind_material>
             <technique_common>
@@ -484,7 +484,7 @@
         <instance_light url="#Lamp-light"/>
       </node>
       <node id="Cylinder" name="Cylinder" type="NODE">
-        <matrix sid="transform">0.3 0 0 0 0 -0.3 2.49346e-7 0.007500006 0 -5.98431e-7 -0.125 -0.007499999 0 0 0 1</matrix>
+        <matrix sid="transform">0.3 0 0 0 0 -0.3 2.49346e-7 0 0 -5.98431e-7 -0.125 -0.007499999 0 0 0 1</matrix>
         <instance_geometry url="#Cylinder-mesh">
           <bind_material>
             <technique_common>
@@ -499,7 +499,7 @@
         </instance_geometry>
       </node>
       <node id="Cylinder_002" name="Cylinder_002" type="NODE">
-        <matrix sid="transform">0.05 0 0 0 0 -0.05 2.49346e-7 0.007500049 0 -9.97386e-8 -0.125 -0.0575 0 0 0 1</matrix>
+        <matrix sid="transform">0.05 0 0 0 0 -0.05 2.49346e-7 0 0 -9.97386e-8 -0.125 -0.0575 0 0 0 1</matrix>
         <instance_geometry url="#Cylinder_003-mesh">
           <bind_material>
             <technique_common>

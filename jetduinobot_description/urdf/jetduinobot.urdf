@@ -42,12 +42,39 @@
     <child link="base_link"/>
     <origin rpy="0 0 0" xyz="0 0 0"/>
   </joint>
+
+
+  <link name="jetson_tk1_link">
+    <visual>
+      <geometry>
+        <mesh filename="package://jetduinobot_description/meshes/jetson_tk1/jetson_tk1.dae" scale="0.1 0.1 0.1"/>
+      </geometry>
+      <material name="silver">
+        <color rgba="0.75 0.75 0.75 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.185 0.225 0.058"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.5"/>
+      <inertia ixx="0.015" ixy="0" ixz="0" iyy="0.0375" iyz="0" izz="0.0375"/>
+    </inertial>
+  </link>
+  <joint name="jetson_tk1_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="jetson_tk1_link"/>
+    <origin rpy="0 0 0" xyz="0 0 1"/>
+  </joint>
+
   <!-- rear wheels -->
   <!-- right rear wheel -->
   <link name="right_rear_wheel_link">
     <visual>
       <geometry>
-        <mesh filename="package://jetduinobot_description/meshes/wheel.dae" scale="0.1 0.1 0.1"/>
+        <mesh filename="package://jetduinobot_description/meshes/wheel/wheel.dae" scale="0.1 0.1 0.1"/>
       </geometry>
     </visual>
     <collision>
@@ -71,7 +98,7 @@
   <link name="left_rear_wheel_link">
     <visual>
       <geometry>
-        <mesh filename="package://jetduinobot_description/meshes/wheel.dae" scale="0.1 0.1 0.1"/>
+        <mesh filename="package://jetduinobot_description/meshes/wheel/wheel.dae" scale="0.1 0.1 0.1"/>
       </geometry>
       <material name="black"/>
     </visual>
@@ -97,7 +124,7 @@
   <link name="right_front_wheel_link">
     <visual>
       <geometry>
-        <mesh filename="package://jetduinobot_description/meshes/wheel.dae" scale="0.1 0.1 0.1"/>
+        <mesh filename="package://jetduinobot_description/meshes/wheel/wheel.dae" scale="0.1 0.1 0.1"/>
       </geometry>
       <material name="black"/>
     </visual>
@@ -122,7 +149,7 @@
   <link name="left_front_wheel_link">
     <visual>
       <geometry>
-        <mesh filename="package://jetduinobot_description/meshes/wheel.dae" scale="0.1 0.1 0.1"/>
+        <mesh filename="package://jetduinobot_description/meshes/wheel/wheel.dae" scale="0.1 0.1 0.1"/>
       </geometry>
       <material name="black"/>
     </visual>

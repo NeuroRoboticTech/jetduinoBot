@@ -22,14 +22,14 @@
       <geometry>
         <mesh filename="package://jetduinobot_description/meshes/chassis.dae" scale="0.1 0.1 0.1"/>
       </geometry>
-      <origin rpy="0 0 0" xyz="0 -0.01 -0.029"/>
+      <origin rpy="0 0 0" xyz="0 -0.0075 -0.029"/>
       <material name="silver">
         <color rgba="0.75 0.75 0.75 1"/>
       </material>
     </visual>
     <collision>
       <geometry>
-        <box size="0.185 0.23 0.058"/>
+        <box size="0.185 0.225 0.058"/>
       </geometry>
     </collision>
     <inertial>
@@ -64,8 +64,9 @@
     <axis xyz="0 0 1"/>
     <parent link="base_link"/>
     <child link="right_rear_wheel_link"/>
-    <origin rpy="-1.5708 0 0" xyz="-1.0825 -0.074 -0.062"/>
+    <origin rpy="0 -1.5708 0" xyz="-0.07 -0.0875 -0.017"/>
   </joint>
+
   <!-- left rear wheel -->
   <link name="left_rear_wheel_link">
     <visual>
@@ -88,8 +89,9 @@
     <axis xyz="0 0 1"/>
     <parent link="base_link"/>
     <child link="left_rear_wheel_link"/>
-    <origin rpy="-1.5708 0 0" xyz="-0.0825 0.074 -0.062"/>
+    <origin rpy="0 1.5708 0" xyz="0.07 -0.0875 -0.017"/>
   </joint>
+
   <!-- front wheels -->
   <!-- right front wheel -->
   <link name="right_front_wheel_link">
@@ -113,8 +115,9 @@
     <axis xyz="0 0 1"/>
     <parent link="base_link"/>
     <child link="right_front_wheel_link"/>
-    <origin rpy="-1.5708 0 0" xyz="0.0475 -0.074 -0.062"/>
+    <origin rpy="0 -1.5708 0" xyz="-0.07 0.0455 -0.017"/>
   </joint>
+
   <!-- left front wheel -->
   <link name="left_front_wheel_link">
     <visual>
@@ -137,7 +140,7 @@
     <axis xyz="0 0 1"/>
     <parent link="base_link"/>
     <child link="left_front_wheel_link"/>
-    <origin rpy="-1.5708 0 0" xyz="0.0475 0.074 -0.062"/>
+    <origin rpy="0 1.5708 0" xyz="0.07 0.0455 -0.017"/>
   </joint>
   <gazebo>
     <plugin filename="libgazebo_ros_skid_steer_drive.so" name="skid_steer_drive_controller">
@@ -151,6 +154,8 @@
       <torque>20</torque>
     </plugin>
   </gazebo>
+
+
   <!-- Stacks -->
   <!-- 3D Sensors -->
 </robot>

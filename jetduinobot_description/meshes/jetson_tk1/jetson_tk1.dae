@@ -5,8 +5,8 @@
       <author>Blender User</author>
       <authoring_tool>Blender 2.70.0 commit date:2014-04-10, commit time:11:49, hash:f93bc76</authoring_tool>
     </contributor>
-    <created>2016-04-02T11:53:41</created>
-    <modified>2016-04-02T11:53:41</modified>
+    <created>2016-04-02T13:50:49</created>
+    <modified>2016-04-02T13:50:49</modified>
     <unit name="meter" meter="1"/>
     <up_axis>Z_UP</up_axis>
   </asset>
@@ -168,10 +168,84 @@
         </technique>
       </extra>
     </light>
+    <light id="Point_001-light" name="Point.001">
+      <technique_common>
+        <point>
+          <color sid="color">1 1 1</color>
+          <constant_attenuation>1</constant_attenuation>
+          <linear_attenuation>0</linear_attenuation>
+          <quadratic_attenuation>0.001599967</quadratic_attenuation>
+        </point>
+      </technique_common>
+      <extra>
+        <technique profile="blender">
+          <adapt_thresh>0.000999987</adapt_thresh>
+          <area_shape>0</area_shape>
+          <area_size>0.1</area_size>
+          <area_sizey>0.1</area_sizey>
+          <area_sizez>0.1</area_sizez>
+          <atm_distance_factor>1</atm_distance_factor>
+          <atm_extinction_factor>1</atm_extinction_factor>
+          <atm_turbidity>2</atm_turbidity>
+          <att1>0</att1>
+          <att2>1</att2>
+          <backscattered_light>1</backscattered_light>
+          <bias>1</bias>
+          <blue>1</blue>
+          <buffers>1</buffers>
+          <bufflag>0</bufflag>
+          <bufsize>512</bufsize>
+          <buftype>2</buftype>
+          <clipend>40</clipend>
+          <clipsta>0.5</clipsta>
+          <compressthresh>0.04999995</compressthresh>
+          <dist sid="blender_dist">25</dist>
+          <energy sid="blender_energy">1</energy>
+          <falloff_type>2</falloff_type>
+          <filtertype>0</filtertype>
+          <flag>0</flag>
+          <gamma sid="blender_gamma">1</gamma>
+          <green>1</green>
+          <halo_intensity sid="blnder_halo_intensity">1</halo_intensity>
+          <horizon_brightness>1</horizon_brightness>
+          <mode>1</mode>
+          <ray_samp>1</ray_samp>
+          <ray_samp_method>1</ray_samp_method>
+          <ray_samp_type>0</ray_samp_type>
+          <ray_sampy>1</ray_sampy>
+          <ray_sampz>1</ray_sampz>
+          <red>1</red>
+          <samp>3</samp>
+          <shadhalostep>0</shadhalostep>
+          <shadow_b sid="blender_shadow_b">0</shadow_b>
+          <shadow_g sid="blender_shadow_g">0</shadow_g>
+          <shadow_r sid="blender_shadow_r">0</shadow_r>
+          <sky_colorspace>2</sky_colorspace>
+          <sky_exposure>1</sky_exposure>
+          <skyblendfac>1</skyblendfac>
+          <skyblendtype>1</skyblendtype>
+          <soft>3</soft>
+          <spotblend>0.15</spotblend>
+          <spotsize>45</spotsize>
+          <spread>1</spread>
+          <sun_brightness>1</sun_brightness>
+          <sun_effect_type>0</sun_effect_type>
+          <sun_intensity>1</sun_intensity>
+          <sun_size>1</sun_size>
+          <type>0</type>
+        </technique>
+      </extra>
+    </light>
   </library_lights>
   <library_images>
+    <image id="jetson_tk1_power_jpg" name="jetson_tk1_power_jpg">
+      <init_from>jetson_tk1_power.jpg</init_from>
+    </image>
     <image id="jetson_tk1_top_jpg" name="jetson_tk1_top_jpg">
       <init_from>jetson_tk1_top.jpg</init_from>
+    </image>
+    <image id="jetson_tk1_periph_jpg" name="jetson_tk1_periph_jpg">
+      <init_from>jetson_tk1_periph.jpg</init_from>
     </image>
     <image id="jetson_tk1_bottom_jpg" name="jetson_tk1_bottom_jpg">
       <init_from>jetson_tk1_bottom.jpg</init_from>
@@ -179,8 +253,563 @@
     <image id="jetson_tk1_db9_side_jpg" name="jetson_tk1_db9_side_jpg">
       <init_from>jetson_tk1_db9_side.jpg</init_from>
     </image>
+    <image id="jetson_tk1_db9_side_left_jpg" name="jetson_tk1_db9_side_left_jpg">
+      <init_from>jetson_tk1_db9_side_left.jpg</init_from>
+    </image>
   </library_images>
   <library_effects>
+    <effect id="power_silver-effect">
+      <profile_COMMON>
+        <technique sid="common">
+          <phong>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <ambient>
+              <color sid="ambient">0 0 0 1</color>
+            </ambient>
+            <diffuse>
+              <color sid="diffuse">0.16 0.16 0.16 1</color>
+            </diffuse>
+            <specular>
+              <color sid="specular">0.5 0.5 0.5 1</color>
+            </specular>
+            <shininess>
+              <float sid="shininess">50</float>
+            </shininess>
+            <index_of_refraction>
+              <float sid="index_of_refraction">1</float>
+            </index_of_refraction>
+          </phong>
+        </technique>
+      </profile_COMMON>
+    </effect>
+    <effect id="power_front-effect">
+      <profile_COMMON>
+        <newparam sid="jetson_tk1_power_jpg-surface">
+          <surface type="2D">
+            <init_from>jetson_tk1_power_jpg</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="jetson_tk1_power_jpg-sampler">
+          <sampler2D>
+            <source>jetson_tk1_power_jpg-surface</source>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <phong>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <ambient>
+              <color sid="ambient">0 0 0 1</color>
+            </ambient>
+            <diffuse>
+              <texture texture="jetson_tk1_power_jpg-sampler" texcoord="UVMap"/>
+            </diffuse>
+            <specular>
+              <color sid="specular">0.5 0.5 0.5 1</color>
+            </specular>
+            <shininess>
+              <float sid="shininess">50</float>
+            </shininess>
+            <index_of_refraction>
+              <float sid="index_of_refraction">1</float>
+            </index_of_refraction>
+          </phong>
+        </technique>
+      </profile_COMMON>
+    </effect>
+    <effect id="power_top-effect">
+      <profile_COMMON>
+        <newparam sid="jetson_tk1_top_jpg-surface">
+          <surface type="2D">
+            <init_from>jetson_tk1_top_jpg</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="jetson_tk1_top_jpg-sampler">
+          <sampler2D>
+            <source>jetson_tk1_top_jpg-surface</source>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <phong>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <ambient>
+              <color sid="ambient">0 0 0 1</color>
+            </ambient>
+            <diffuse>
+              <texture texture="jetson_tk1_top_jpg-sampler" texcoord="UVMap"/>
+            </diffuse>
+            <specular>
+              <color sid="specular">0.5 0.5 0.5 1</color>
+            </specular>
+            <shininess>
+              <float sid="shininess">50</float>
+            </shininess>
+            <index_of_refraction>
+              <float sid="index_of_refraction">1</float>
+            </index_of_refraction>
+          </phong>
+        </technique>
+      </profile_COMMON>
+    </effect>
+    <effect id="hd_white-effect">
+      <profile_COMMON>
+        <technique sid="common">
+          <phong>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <ambient>
+              <color sid="ambient">0 0 0 1</color>
+            </ambient>
+            <diffuse>
+              <color sid="diffuse">0.64 0.64 0.64 1</color>
+            </diffuse>
+            <specular>
+              <color sid="specular">0.5 0.5 0.5 1</color>
+            </specular>
+            <shininess>
+              <float sid="shininess">50</float>
+            </shininess>
+            <index_of_refraction>
+              <float sid="index_of_refraction">1</float>
+            </index_of_refraction>
+          </phong>
+        </technique>
+      </profile_COMMON>
+    </effect>
+    <effect id="hd_top-effect">
+      <profile_COMMON>
+        <newparam sid="jetson_tk1_top_jpg-surface">
+          <surface type="2D">
+            <init_from>jetson_tk1_top_jpg</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="jetson_tk1_top_jpg-sampler">
+          <sampler2D>
+            <source>jetson_tk1_top_jpg-surface</source>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <phong>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <ambient>
+              <color sid="ambient">0 0 0 1</color>
+            </ambient>
+            <diffuse>
+              <texture texture="jetson_tk1_top_jpg-sampler" texcoord="UVMap"/>
+            </diffuse>
+            <specular>
+              <color sid="specular">0.5 0.5 0.5 1</color>
+            </specular>
+            <shininess>
+              <float sid="shininess">50</float>
+            </shininess>
+            <index_of_refraction>
+              <float sid="index_of_refraction">1</float>
+            </index_of_refraction>
+          </phong>
+        </technique>
+      </profile_COMMON>
+    </effect>
+    <effect id="audio_silver-effect">
+      <profile_COMMON>
+        <technique sid="common">
+          <phong>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <ambient>
+              <color sid="ambient">0 0 0 1</color>
+            </ambient>
+            <diffuse>
+              <color sid="diffuse">0.16 0.16 0.16 1</color>
+            </diffuse>
+            <specular>
+              <color sid="specular">0.5 0.5 0.5 1</color>
+            </specular>
+            <shininess>
+              <float sid="shininess">50</float>
+            </shininess>
+            <index_of_refraction>
+              <float sid="index_of_refraction">1</float>
+            </index_of_refraction>
+          </phong>
+        </technique>
+      </profile_COMMON>
+    </effect>
+    <effect id="audio_front-effect">
+      <profile_COMMON>
+        <newparam sid="jetson_tk1_periph_jpg-surface">
+          <surface type="2D">
+            <init_from>jetson_tk1_periph_jpg</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="jetson_tk1_periph_jpg-sampler">
+          <sampler2D>
+            <source>jetson_tk1_periph_jpg-surface</source>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <phong>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <ambient>
+              <color sid="ambient">0 0 0 1</color>
+            </ambient>
+            <diffuse>
+              <texture texture="jetson_tk1_periph_jpg-sampler" texcoord="UVMap"/>
+            </diffuse>
+            <specular>
+              <color sid="specular">0.5 0.5 0.5 1</color>
+            </specular>
+            <shininess>
+              <float sid="shininess">50</float>
+            </shininess>
+            <index_of_refraction>
+              <float sid="index_of_refraction">1</float>
+            </index_of_refraction>
+          </phong>
+        </technique>
+      </profile_COMMON>
+    </effect>
+    <effect id="audio_top-effect">
+      <profile_COMMON>
+        <newparam sid="jetson_tk1_top_jpg-surface">
+          <surface type="2D">
+            <init_from>jetson_tk1_top_jpg</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="jetson_tk1_top_jpg-sampler">
+          <sampler2D>
+            <source>jetson_tk1_top_jpg-surface</source>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <phong>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <ambient>
+              <color sid="ambient">0 0 0 1</color>
+            </ambient>
+            <diffuse>
+              <texture texture="jetson_tk1_top_jpg-sampler" texcoord="UVMap"/>
+            </diffuse>
+            <specular>
+              <color sid="specular">0.5 0.5 0.5 1</color>
+            </specular>
+            <shininess>
+              <float sid="shininess">50</float>
+            </shininess>
+            <index_of_refraction>
+              <float sid="index_of_refraction">1</float>
+            </index_of_refraction>
+          </phong>
+        </technique>
+      </profile_COMMON>
+    </effect>
+    <effect id="network_silver-effect">
+      <profile_COMMON>
+        <technique sid="common">
+          <phong>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <ambient>
+              <color sid="ambient">0 0 0 1</color>
+            </ambient>
+            <diffuse>
+              <color sid="diffuse">0.16 0.16 0.16 1</color>
+            </diffuse>
+            <specular>
+              <color sid="specular">0.5 0.5 0.5 1</color>
+            </specular>
+            <shininess>
+              <float sid="shininess">50</float>
+            </shininess>
+            <index_of_refraction>
+              <float sid="index_of_refraction">1</float>
+            </index_of_refraction>
+          </phong>
+        </technique>
+      </profile_COMMON>
+    </effect>
+    <effect id="network_top-effect">
+      <profile_COMMON>
+        <newparam sid="jetson_tk1_top_jpg-surface">
+          <surface type="2D">
+            <init_from>jetson_tk1_top_jpg</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="jetson_tk1_top_jpg-sampler">
+          <sampler2D>
+            <source>jetson_tk1_top_jpg-surface</source>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <phong>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <ambient>
+              <color sid="ambient">0 0 0 1</color>
+            </ambient>
+            <diffuse>
+              <texture texture="jetson_tk1_top_jpg-sampler" texcoord="UVMap"/>
+            </diffuse>
+            <specular>
+              <color sid="specular">0.5 0.5 0.5 1</color>
+            </specular>
+            <shininess>
+              <float sid="shininess">50</float>
+            </shininess>
+            <index_of_refraction>
+              <float sid="index_of_refraction">1</float>
+            </index_of_refraction>
+          </phong>
+        </technique>
+      </profile_COMMON>
+    </effect>
+    <effect id="network_front-effect">
+      <profile_COMMON>
+        <newparam sid="jetson_tk1_periph_jpg-surface">
+          <surface type="2D">
+            <init_from>jetson_tk1_periph_jpg</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="jetson_tk1_periph_jpg-sampler">
+          <sampler2D>
+            <source>jetson_tk1_periph_jpg-surface</source>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <phong>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <ambient>
+              <color sid="ambient">0 0 0 1</color>
+            </ambient>
+            <diffuse>
+              <texture texture="jetson_tk1_periph_jpg-sampler" texcoord="UVMap"/>
+            </diffuse>
+            <specular>
+              <color sid="specular">0.5 0.5 0.5 1</color>
+            </specular>
+            <shininess>
+              <float sid="shininess">50</float>
+            </shininess>
+            <index_of_refraction>
+              <float sid="index_of_refraction">1</float>
+            </index_of_refraction>
+          </phong>
+        </technique>
+      </profile_COMMON>
+    </effect>
+    <effect id="usb_silver-effect">
+      <profile_COMMON>
+        <technique sid="common">
+          <phong>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <ambient>
+              <color sid="ambient">0 0 0 1</color>
+            </ambient>
+            <diffuse>
+              <color sid="diffuse">0.16 0.16 0.16 1</color>
+            </diffuse>
+            <specular>
+              <color sid="specular">0.5 0.5 0.5 1</color>
+            </specular>
+            <shininess>
+              <float sid="shininess">50</float>
+            </shininess>
+            <index_of_refraction>
+              <float sid="index_of_refraction">1</float>
+            </index_of_refraction>
+          </phong>
+        </technique>
+      </profile_COMMON>
+    </effect>
+    <effect id="usb_front-effect">
+      <profile_COMMON>
+        <newparam sid="jetson_tk1_periph_jpg-surface">
+          <surface type="2D">
+            <init_from>jetson_tk1_periph_jpg</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="jetson_tk1_periph_jpg-sampler">
+          <sampler2D>
+            <source>jetson_tk1_periph_jpg-surface</source>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <phong>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <ambient>
+              <color sid="ambient">0 0 0 1</color>
+            </ambient>
+            <diffuse>
+              <texture texture="jetson_tk1_periph_jpg-sampler" texcoord="UVMap"/>
+            </diffuse>
+            <specular>
+              <color sid="specular">0.5 0.5 0.5 1</color>
+            </specular>
+            <shininess>
+              <float sid="shininess">50</float>
+            </shininess>
+            <index_of_refraction>
+              <float sid="index_of_refraction">1</float>
+            </index_of_refraction>
+          </phong>
+        </technique>
+      </profile_COMMON>
+    </effect>
+    <effect id="usb_top-effect">
+      <profile_COMMON>
+        <newparam sid="jetson_tk1_top_jpg-surface">
+          <surface type="2D">
+            <init_from>jetson_tk1_top_jpg</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="jetson_tk1_top_jpg-sampler">
+          <sampler2D>
+            <source>jetson_tk1_top_jpg-surface</source>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <phong>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <ambient>
+              <color sid="ambient">0 0 0 1</color>
+            </ambient>
+            <diffuse>
+              <texture texture="jetson_tk1_top_jpg-sampler" texcoord="UVMap"/>
+            </diffuse>
+            <specular>
+              <color sid="specular">0.5 0.5 0.5 1</color>
+            </specular>
+            <shininess>
+              <float sid="shininess">50</float>
+            </shininess>
+            <index_of_refraction>
+              <float sid="index_of_refraction">1</float>
+            </index_of_refraction>
+          </phong>
+        </technique>
+      </profile_COMMON>
+    </effect>
+    <effect id="hdmi_silver-effect">
+      <profile_COMMON>
+        <technique sid="common">
+          <phong>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <ambient>
+              <color sid="ambient">0 0 0 1</color>
+            </ambient>
+            <diffuse>
+              <color sid="diffuse">0.16 0.16 0.16 1</color>
+            </diffuse>
+            <specular>
+              <color sid="specular">0.5 0.5 0.5 1</color>
+            </specular>
+            <shininess>
+              <float sid="shininess">50</float>
+            </shininess>
+            <index_of_refraction>
+              <float sid="index_of_refraction">1</float>
+            </index_of_refraction>
+          </phong>
+        </technique>
+      </profile_COMMON>
+    </effect>
+    <effect id="hdmi_top-effect">
+      <profile_COMMON>
+        <newparam sid="jetson_tk1_top_jpg-surface">
+          <surface type="2D">
+            <init_from>jetson_tk1_top_jpg</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="jetson_tk1_top_jpg-sampler">
+          <sampler2D>
+            <source>jetson_tk1_top_jpg-surface</source>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <phong>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <ambient>
+              <color sid="ambient">0 0 0 1</color>
+            </ambient>
+            <diffuse>
+              <texture texture="jetson_tk1_top_jpg-sampler" texcoord="UVMap"/>
+            </diffuse>
+            <specular>
+              <color sid="specular">0.5 0.5 0.5 1</color>
+            </specular>
+            <shininess>
+              <float sid="shininess">50</float>
+            </shininess>
+            <index_of_refraction>
+              <float sid="index_of_refraction">1</float>
+            </index_of_refraction>
+          </phong>
+        </technique>
+      </profile_COMMON>
+    </effect>
+    <effect id="hdmi_front-effect">
+      <profile_COMMON>
+        <newparam sid="jetson_tk1_periph_jpg-surface">
+          <surface type="2D">
+            <init_from>jetson_tk1_periph_jpg</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="jetson_tk1_periph_jpg-sampler">
+          <sampler2D>
+            <source>jetson_tk1_periph_jpg-surface</source>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <phong>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <ambient>
+              <color sid="ambient">0 0 0 1</color>
+            </ambient>
+            <diffuse>
+              <texture texture="jetson_tk1_periph_jpg-sampler" texcoord="UVMap"/>
+            </diffuse>
+            <specular>
+              <color sid="specular">0.5 0.5 0.5 1</color>
+            </specular>
+            <shininess>
+              <float sid="shininess">50</float>
+            </shininess>
+            <index_of_refraction>
+              <float sid="index_of_refraction">1</float>
+            </index_of_refraction>
+          </phong>
+        </technique>
+      </profile_COMMON>
+    </effect>
     <effect id="jetson_top-effect">
       <profile_COMMON>
         <newparam sid="jetson_tk1_top_jpg-surface">
@@ -405,6 +1034,16 @@
     </effect>
     <effect id="jtag_black-effect">
       <profile_COMMON>
+        <newparam sid="jetson_tk1_db9_side_jpg-surface">
+          <surface type="2D">
+            <init_from>jetson_tk1_db9_side_jpg</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="jetson_tk1_db9_side_jpg-sampler">
+          <sampler2D>
+            <source>jetson_tk1_db9_side_jpg-surface</source>
+          </sampler2D>
+        </newparam>
         <technique sid="common">
           <phong>
             <emission>
@@ -414,7 +1053,7 @@
               <color sid="ambient">0 0 0 1</color>
             </ambient>
             <diffuse>
-              <color sid="diffuse">0.1 0.1 0.1 1</color>
+              <texture texture="jetson_tk1_db9_side_jpg-sampler" texcoord="UVMap"/>
             </diffuse>
             <specular>
               <color sid="specular">0.005543834 0.005543834 0.005543834 1</color>
@@ -465,8 +1104,229 @@
         </technique>
       </profile_COMMON>
     </effect>
+    <effect id="db9_black-effect">
+      <profile_COMMON>
+        <technique sid="common">
+          <phong>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <ambient>
+              <color sid="ambient">0 0 0 1</color>
+            </ambient>
+            <diffuse>
+              <color sid="diffuse">0.006460685 0.006460685 0.006460685 1</color>
+            </diffuse>
+            <specular>
+              <color sid="specular">0.005010894 0.005010894 0.005010894 1</color>
+            </specular>
+            <shininess>
+              <float sid="shininess">50</float>
+            </shininess>
+            <index_of_refraction>
+              <float sid="index_of_refraction">1</float>
+            </index_of_refraction>
+          </phong>
+        </technique>
+      </profile_COMMON>
+    </effect>
+    <effect id="db9_front-effect">
+      <profile_COMMON>
+        <newparam sid="jetson_tk1_periph_jpg-surface">
+          <surface type="2D">
+            <init_from>jetson_tk1_periph_jpg</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="jetson_tk1_periph_jpg-sampler">
+          <sampler2D>
+            <source>jetson_tk1_periph_jpg-surface</source>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <phong>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <ambient>
+              <color sid="ambient">0 0 0 1</color>
+            </ambient>
+            <diffuse>
+              <texture texture="jetson_tk1_periph_jpg-sampler" texcoord="UVMap"/>
+            </diffuse>
+            <specular>
+              <color sid="specular">0.5 0.5 0.5 1</color>
+            </specular>
+            <shininess>
+              <float sid="shininess">50</float>
+            </shininess>
+            <index_of_refraction>
+              <float sid="index_of_refraction">1</float>
+            </index_of_refraction>
+          </phong>
+        </technique>
+      </profile_COMMON>
+    </effect>
+    <effect id="db9_top-effect">
+      <profile_COMMON>
+        <newparam sid="jetson_tk1_top_jpg-surface">
+          <surface type="2D">
+            <init_from>jetson_tk1_top_jpg</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="jetson_tk1_top_jpg-sampler">
+          <sampler2D>
+            <source>jetson_tk1_top_jpg-surface</source>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <phong>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <ambient>
+              <color sid="ambient">0 0 0 1</color>
+            </ambient>
+            <diffuse>
+              <texture texture="jetson_tk1_top_jpg-sampler" texcoord="UVMap"/>
+            </diffuse>
+            <specular>
+              <color sid="specular">0.5 0.5 0.5 1</color>
+            </specular>
+            <shininess>
+              <float sid="shininess">50</float>
+            </shininess>
+            <index_of_refraction>
+              <float sid="index_of_refraction">1</float>
+            </index_of_refraction>
+          </phong>
+        </technique>
+      </profile_COMMON>
+    </effect>
+    <effect id="db9_side-effect">
+      <profile_COMMON>
+        <newparam sid="jetson_tk1_db9_side_jpg-surface">
+          <surface type="2D">
+            <init_from>jetson_tk1_db9_side_jpg</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="jetson_tk1_db9_side_jpg-sampler">
+          <sampler2D>
+            <source>jetson_tk1_db9_side_jpg-surface</source>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <phong>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <ambient>
+              <color sid="ambient">0 0 0 1</color>
+            </ambient>
+            <diffuse>
+              <texture texture="jetson_tk1_db9_side_jpg-sampler" texcoord="UVMap"/>
+            </diffuse>
+            <specular>
+              <color sid="specular">0.5 0.5 0.5 1</color>
+            </specular>
+            <shininess>
+              <float sid="shininess">50</float>
+            </shininess>
+            <index_of_refraction>
+              <float sid="index_of_refraction">1</float>
+            </index_of_refraction>
+          </phong>
+        </technique>
+      </profile_COMMON>
+    </effect>
+    <effect id="db9_left-side-effect">
+      <profile_COMMON>
+        <newparam sid="jetson_tk1_db9_side_left_jpg-surface">
+          <surface type="2D">
+            <init_from>jetson_tk1_db9_side_left_jpg</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="jetson_tk1_db9_side_left_jpg-sampler">
+          <sampler2D>
+            <source>jetson_tk1_db9_side_left_jpg-surface</source>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <phong>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <ambient>
+              <color sid="ambient">0 0 0 1</color>
+            </ambient>
+            <diffuse>
+              <texture texture="jetson_tk1_db9_side_left_jpg-sampler" texcoord="UVMap"/>
+            </diffuse>
+            <specular>
+              <color sid="specular">0.5 0.5 0.5 1</color>
+            </specular>
+            <shininess>
+              <float sid="shininess">50</float>
+            </shininess>
+            <index_of_refraction>
+              <float sid="index_of_refraction">1</float>
+            </index_of_refraction>
+          </phong>
+        </technique>
+      </profile_COMMON>
+    </effect>
   </library_effects>
   <library_materials>
+    <material id="power_silver-material" name="power_silver">
+      <instance_effect url="#power_silver-effect"/>
+    </material>
+    <material id="power_front-material" name="power_front">
+      <instance_effect url="#power_front-effect"/>
+    </material>
+    <material id="power_top-material" name="power_top">
+      <instance_effect url="#power_top-effect"/>
+    </material>
+    <material id="hd_white-material" name="hd_white">
+      <instance_effect url="#hd_white-effect"/>
+    </material>
+    <material id="hd_top-material" name="hd_top">
+      <instance_effect url="#hd_top-effect"/>
+    </material>
+    <material id="audio_silver-material" name="audio_silver">
+      <instance_effect url="#audio_silver-effect"/>
+    </material>
+    <material id="audio_front-material" name="audio_front">
+      <instance_effect url="#audio_front-effect"/>
+    </material>
+    <material id="audio_top-material" name="audio_top">
+      <instance_effect url="#audio_top-effect"/>
+    </material>
+    <material id="network_silver-material" name="network_silver">
+      <instance_effect url="#network_silver-effect"/>
+    </material>
+    <material id="network_top-material" name="network_top">
+      <instance_effect url="#network_top-effect"/>
+    </material>
+    <material id="network_front-material" name="network_front">
+      <instance_effect url="#network_front-effect"/>
+    </material>
+    <material id="usb_silver-material" name="usb_silver">
+      <instance_effect url="#usb_silver-effect"/>
+    </material>
+    <material id="usb_front-material" name="usb_front">
+      <instance_effect url="#usb_front-effect"/>
+    </material>
+    <material id="usb_top-material" name="usb_top">
+      <instance_effect url="#usb_top-effect"/>
+    </material>
+    <material id="hdmi_silver-material" name="hdmi_silver">
+      <instance_effect url="#hdmi_silver-effect"/>
+    </material>
+    <material id="hdmi_top-material" name="hdmi_top">
+      <instance_effect url="#hdmi_top-effect"/>
+    </material>
+    <material id="hdmi_front-material" name="hdmi_front">
+      <instance_effect url="#hdmi_front-effect"/>
+    </material>
     <material id="jetson_top-material" name="jetson_top">
       <instance_effect url="#jetson_top-effect"/>
     </material>
@@ -494,8 +1354,358 @@
     <material id="jtag_texture-material" name="jtag_texture">
       <instance_effect url="#jtag_texture-effect"/>
     </material>
+    <material id="db9_black-material" name="db9_black">
+      <instance_effect url="#db9_black-effect"/>
+    </material>
+    <material id="db9_front-material" name="db9_front">
+      <instance_effect url="#db9_front-effect"/>
+    </material>
+    <material id="db9_top-material" name="db9_top">
+      <instance_effect url="#db9_top-effect"/>
+    </material>
+    <material id="db9_side-material" name="db9_side">
+      <instance_effect url="#db9_side-effect"/>
+    </material>
+    <material id="db9_left-side-material" name="db9_left-side">
+      <instance_effect url="#db9_left-side-effect"/>
+    </material>
   </library_materials>
   <library_geometries>
+    <geometry id="Cube_009-mesh" name="Cube.009">
+      <mesh>
+        <source id="Cube_009-mesh-positions">
+          <float_array id="Cube_009-mesh-positions-array" count="24">-1 -1 -1 -1 1 -1 1 1 -1 1 -1 -1 -1 -1 1 -1 1 1 1 1 1 1 -1 1</float_array>
+          <technique_common>
+            <accessor source="#Cube_009-mesh-positions-array" count="8" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Cube_009-mesh-normals">
+          <float_array id="Cube_009-mesh-normals-array" count="36">-1 0 0 0 1 0 1 0 0 0 -1 0 0 0 -1 0 0 1 -1 0 0 0 1 0 1 0 0 0 -1 0 0 0 -1 0 0 1</float_array>
+          <technique_common>
+            <accessor source="#Cube_009-mesh-normals-array" count="12" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Cube_009-mesh-map-0">
+          <float_array id="Cube_009-mesh-map-0-array" count="72">0.6104772 0.9868153 0.6401716 0.9868153 0.6401716 0.9535132 0.3985763 0.4291949 0.4608599 0.4291949 0.4608599 0.3658747 0.6410095 0.9886543 0.6072542 0.9886543 0.6072542 0.9507979 0.6410548 0.9799252 0.6095308 0.9799252 0.6095308 0.9445711 0 0 0 0 0 0 0.6680421 0.919523 0.6680421 1.002312 0.5942221 1.002312 0.6104772 0.9535132 0.6104772 0.9868153 0.6401716 0.9535132 0.3985763 0.3658747 0.3985763 0.4291949 0.4608599 0.3658747 0.6410095 0.9507979 0.6410095 0.9886543 0.6072542 0.9507979 0.6410548 0.9445711 0.6410548 0.9799252 0.6095308 0.9445711 0 0 0 0 0 0 0.5942221 0.919523 0.6680421 0.919523 0.5942221 1.002312</float_array>
+          <technique_common>
+            <accessor source="#Cube_009-mesh-map-0-array" count="36" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Cube_009-mesh-vertices">
+          <input semantic="POSITION" source="#Cube_009-mesh-positions"/>
+        </vertices>
+        <polylist material="power_silver-material" count="2">
+          <input semantic="VERTEX" source="#Cube_009-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Cube_009-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#Cube_009-mesh-map-0" offset="2" set="0"/>
+          <vcount>3 3 </vcount>
+          <p>0 4 12 1 4 13 2 4 14 3 10 30 0 10 31 2 10 32</p>
+        </polylist>
+        <polylist material="power_front-material" count="2">
+          <input semantic="VERTEX" source="#Cube_009-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Cube_009-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#Cube_009-mesh-map-0" offset="2" set="0"/>
+          <vcount>3 3 </vcount>
+          <p>5 1 3 6 1 4 2 1 5 1 7 21 5 7 22 2 7 23</p>
+        </polylist>
+        <polylist material="power_top-material" count="8">
+          <input semantic="VERTEX" source="#Cube_009-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Cube_009-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#Cube_009-mesh-map-0" offset="2" set="0"/>
+          <vcount>3 3 3 3 3 3 3 3 </vcount>
+          <p>4 0 0 5 0 1 1 0 2 6 2 6 7 2 7 3 2 8 7 3 9 4 3 10 0 3 11 7 5 15 6 5 16 5 5 17 0 6 18 4 6 19 1 6 20 2 8 24 6 8 25 3 8 26 3 9 27 7 9 28 0 9 29 4 11 33 7 11 34 5 11 35</p>
+        </polylist>
+      </mesh>
+    </geometry>
+    <geometry id="Cube_008-mesh" name="Cube.008">
+      <mesh>
+        <source id="Cube_008-mesh-positions">
+          <float_array id="Cube_008-mesh-positions-array" count="864">-1 -1 -1 -1 1 -1 1 1 -1 1 -1 -1 -1 -1 1 -1 1 1 1 1 1 1 -1 1 -1 0 1 -1 0 -1 1 0 1 1 0 -1 -1 -0.5 -1 1 -0.5 1 -1 -0.5 1 1 -0.5 -1 -1 0.5 1 1 0.5 -1 -1 0.5 -1 1 0.5 1 -1 -1 0 -1 1 0 1 1 0 1 -1 0 1 -0.5 0 -1 -0.5 0 -1 0.5 0 1 0.5 0 -1 -0.75 -1 1 -0.75 1 -1 -0.75 1 1 -0.75 -1 1 -0.75 0 -1 -0.75 0 -1 0.75 1 1 0.75 -1 -1 0.75 -1 1 0.75 1 -1 0.75 0 1 0.75 0 -1 -0.25 -1 1 -0.25 1 -1 -0.25 1 1 -0.25 -1 -1 -0.25 0 1 -0.25 0 -1 0.25 1 1 0.25 -1 -1 0.25 -1 1 0.25 1 1 0.25 0 -1 0.25 0 -1 -1 -1 -1 1 -1 1 1 -1 1 -1 -1 -1 -1 1 -1 1 1 1 1 1 1 -1 1 -1 0 1 -1 0 -1 1 0 1 1 0 -1 1 -0.5 1 -1 -0.5 1 -1 0.5 1 1 0.5 1 -1 -1 0 -1 1 0 1 1 0 1 -1 0 -1 0 0 1 0 0 1 -0.5 0 -1 -0.5 0 -1 0.5 0 1 0.5 0 -1 -0.75 -1 1 -0.75 1 -1 -0.75 1 1 -0.75 -1 1 -0.75 0 -1 -0.75 0 -1 0.75 1 1 0.75 -1 -1 0.75 -1 1 0.75 1 -1 0.75 0 1 0.75 0 -1 -0.25 -1 1 -0.25 1 -1 -0.25 1 1 -0.25 -1 -1 -0.25 0 1 -0.25 0 -1 0.25 1 1 0.25 -1 -1 0.25 -1 1 0.25 1 1 0.25 0 -1 0.25 0 1 -0.5 -1 1 -0.5 0 1 -0.75 -1 1 -0.75 0 1 -0.25 -1 1 -0.25 0 -1 1 -0.6969697 1 1 -0.6969697 1 -1 -0.6969697 1.219512 -0.25 -1 1.219512 0.75 -1 1.219512 -0.75 0 -1 -1 -0.6969697 -1.219512 -0.75 -1 -1 -0.75 -0.6969697 -1 0.75 -0.6969697 1 0.75 -0.6969697 -1 -0.25 -0.6969697 1 -0.25 -0.6969697 1 0.25 -0.6969697 -1 0.25 -0.6969697 -1 1 -0.6969697 1 1 -0.6969697 1 -1 -0.6969697 -1 0 -0.6969697 1 0 -0.6969697 -1 -1 -0.6969697 1 -0.75 -0.6969697 -1 -0.75 -0.6969697 -1 0.75 -0.6969697 1 0.75 -0.6969697 -1 -0.25 -0.6969697 1 -0.25 -0.6969697 1 0.25 -0.6969697 -1 0.25 -0.6969697 1.219512 -0.75 -1 -1.219512 0.5 0 1 -0.25 -0.6969697 -1 -1 -1 -1 1 -1 1 1 -1 1 -1 -1 -1 -0.5 -1 1 0.5 -1 -1 0.5 -1 -1 -0.5 0 -1 0.5 0 1 0.5 0 -1 -0.75 -1 -1 -0.75 0 1 0.75 -1 -1 0.75 -1 -1 0.75 0 1 0.75 0 -1 -0.25 -1 -1 -0.25 0 1 0.25 -1 -1 0.25 -1 1 0.25 0 -1 0.25 0 -1 -1 -1 -1 1 -1 1 1 -1 1 -1 -1 -1 0 -1 1 0 -1 -1 -0.75 -1 1 -0.75 -1 1 0.75 -1 -1 0.75 -1 -1 -0.25 -1 1 -0.25 -1 1 0.25 -1 -1 0.25 -1 1 -0.5 -1 1 -0.5 0 1 -0.75 -1 1 -0.75 0 1 -0.25 -1 1 -0.25 0 -1 1 -0.6969697 1 1 -0.6969697 1 -1 -0.6969697 -1.219512 -0.5 0 -1 -1 -0.6969697 -1 -0.75 -0.6969697 -1 0.75 -0.6969697 1 0.75 -0.6969697 -1 -0.25 -0.6969697 1 0.25 -0.6969697 -1 0.25 -0.6969697 -1 1 -0.6969697 1 1 -0.6969697 1 -1 -0.6969697 -1 0 -0.6969697 1 0 -0.6969697 -1 -1 -0.6969697 1 -0.75 -0.6969697 -1 -0.75 -0.6969697 -1 0.75 -0.6969697 1 0.75 -0.6969697 -1 -0.25 -0.6969697 1 -0.25 -0.6969697 1 0.25 -0.6969697 -1 0.25 -0.6969697 -1.219512 0.5 -1 -1.219512 -0.5 -1 1 -0.25 -0.6969697 1.219512 0.25 -1 1.219512 -0.75 -1 1.219512 -0.75 0 1.219512 0.75 -1 1.219512 -0.25 -1 1.219512 0.25 -1 1.219512 -0.75 -1 1.219512 -0.75 0 1.219512 -0.25 -1 1.219512 -0.75 -0.6969697 1.219512 0.75 -0.6969697 1.219512 -0.25 -0.6969697 1.219512 0.25 -0.6969697 1.219512 -0.75 -0.6969697 1.219512 0.75 -0.6969697 1.219512 -0.25 -0.6969697 1.219512 0.25 -0.6969697 1.219512 -0.75 -0.6969697 1.219512 -0.25 -0.6969697 1.219512 0.5 -1 1.219512 0.5 0 1.219512 0.75 -1 1.219512 0.75 0 1.219512 0.25 -1 1.219512 0.25 0 1.219512 1 -1 1.219512 -1 -1 1.219512 0 -1 1.219512 -0.75 -1 1.219512 0.75 -1 1.219512 -0.25 -1 1.219512 0.25 -1 1.219512 -0.5 -1 1.219512 -0.5 0 1.219512 -0.75 -1 1.219512 -0.75 0 1.219512 -0.25 -1 1.219512 -0.25 0 1.219512 0.5 -0.6969697 1.219512 0.75 -0.6969697 1.219512 0.25 -0.6969697 1.219512 1 -0.6969697 1.219512 -1 -0.6969697 1.219512 0 -0.6969697 1.219512 -0.75 -0.6969697 1.219512 0.75 -0.6969697 1.219512 -0.25 -0.6969697 1.219512 0.25 -0.6969697 1.219512 -0.5 -0.6969697 1.219512 -0.75 -0.6969697 1.219512 -0.25 -0.6969697 -1.219512 -0.75 0 -1.219512 0.75 -1 -1.219512 0.75 0 -1.219512 -0.25 -1 -1.219512 -0.25 0 -1.219512 0.25 -1 -1.219512 0.25 0 -1.219512 -1 -1 -1.219512 1 -1 -1.219512 0 -1 -1.219512 -0.75 -1 -1.219512 0.75 -1 -1.219512 -0.25 -1 -1.219512 0.25 -1 -1.219512 -0.5 -0.6969697 -1.219512 0.5 -0.6969697 -1.219512 -0.75 -0.6969697 -1.219512 0.75 -0.6969697 -1.219512 -0.25 -0.6969697 -1.219512 0.25 -0.6969697 -1.219512 1 -0.6969697 -1.219512 0 -0.6969697 -1.219512 -1 -0.6969697 -1.219512 -0.75 -0.6969697 -1.219512 0.75 -0.6969697 -1.219512 -0.25 -0.6969697 -1.219512 0.25 -0.6969697</float_array>
+          <technique_common>
+            <accessor source="#Cube_008-mesh-positions-array" count="288" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Cube_008-mesh-normals">
+          <float_array id="Cube_008-mesh-normals-array" count="1716">0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1 0 0 1 0 0 0 0 0 0 0 0 -1 0 0 1 0 0 0 0 0 0 0 0 -1 0 0 1 0 0 0 0 0 -1 0 0 1 0 0 0 0 0 0 0 1 0 0 0 0 0 -1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 -1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1 0 0 1 0 0 -1 0 0 1 0 0 1 0 0 -1 0 0 -1 0 0 1 0 0 0 0 0 1 0 0 -1 0 0 0 0 0 -1 0 0 1 0 0 0 0 0 -1 0 0 1 0 0 0 0 0 1 0 0 -1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 -1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1 0 0 1 0 0 -1 0 0 1 0 0 -1 0 0 1 0 0 1 0 0 -1 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 0 0 -1 0 0 1 0 0 -1 0 0 0 1 0 1 0 0 0 -1 0 0 -1 0 0 1 0 0 0 0 1 0 0 0 0 0 -1 0 0 0 0 0 0 0 0 0 1 0 0 -1 0 0 1 0 0 1 0 -1 0 0 0 0 0 1 0 0 -1 0 0 0 0 0 0 -1 0 0 1 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1 0 0 -1 0 0 0 0 0 0 0 0 0 0 0 0 0 -1 0 0 1 0 0 0 -1 0 0 0 0 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0 0 -1 0 0 0 0 0 0 0 0 1 0 -1 0 0 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 0 1 0 0 0 -1 0 1 0 0 0 1 0 -1 0 0 0 -1 0 0 1 0 -1 0 0 0 -1 0 0 -1 0 0 1 0 -1 0 0 0 1 0 1 0 0 0 -1 0 0 1 0 0 -1 0 0 -1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1 0 0 1 0 0 0 0 0 0 0 0 -1 0 0 1 0 0 0 0 0 0 0 0 -1 0 0 1 0 0 0 0 0 -1 0 0 1 0 0 0 0 0 0 0 1 0 0 0 0 0 -1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 -1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1 0 0 1 0 0 -1 0 0 1 0 0 1 0 0 -1 0 0 -1 0 0 1 0 0 0 0 0 1 0 0 -1 0 0 0 0 0 -1 0 0 1 0 0 0 0 0 -1 0 0 1 0 0 0 0 0 1 0 0 -1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 -1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1 0 0 1 0 0 -1 0 0 1 0 0 -1 0 0 1 0 0 1 0 0 -1 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 0 0 -1 0 0 1 0 0 -1 0 0 0 1 0 1 0 0 0 -1 0 0 -1 0 0 1 0 0 0 0 1 0 0 0 0 0 -1 0 0 0 0 0 0 0 0 0 1 0 0 -1 0 0 1 0 0 1 0 -1 0 0 0 0 0 1 0 0 -1 0 0 0 0 0 0 -1 0 0 1 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1 0 0 -1 0 0 0 0 0 0 0 0 0 0 0 0 0 -1 0 0 1 0 0 0 -1 0 0 0 0 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0 0 -1 0 0 0 0 0 0 0 0 1 0 -1 0 0 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 0 1 0 0 0 -1 0 1 0 0 0 1 0 -1 0 0 0 -1 0 0 1 0 -1 0 0 0 -1 0 0 -1 0 0 1 0 -1 0 0 0 1 0 1 0 0 0 -1 0 0 1 0 0 -1 0 0 -1</float_array>
+          <technique_common>
+            <accessor source="#Cube_008-mesh-normals-array" count="572" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Cube_008-mesh-map-0">
+          <float_array id="Cube_008-mesh-map-0-array" count="3432">0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.9994106 0.6586272 0.9994106 0.6808431 0.9480842 0.6808431 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.9994106 0.5697634 0.9994106 0.5919794 0.9480842 0.5919794 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.9994106 0.5253315 0.9994106 0.5475475 0.9480842 0.5475475 0 0 0 0 0 0 0 0 0 0 0 0 0.9994106 0.6141954 0.9994106 0.6364113 0.9480842 0.6364113 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.9994106 0.5031155 0.9994106 0.5253315 0.9480842 0.5253315 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.9994106 0.6364113 0.9994106 0.6586272 0.9480842 0.6586272 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.9994106 0.5475475 0.9994106 0.5697634 0.9480842 0.5697634 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.9994106 0.5919794 0.9994106 0.6141954 0.9480842 0.6141954 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.9480842 0.6586272 0.9994106 0.6586272 0.9480842 0.6808431 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.9480842 0.5697634 0.9994106 0.5697634 0.9480842 0.5919794 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.9480842 0.5253315 0.9994106 0.5253315 0.9480842 0.5475475 0 0 0 0 0 0 0 0 0 0 0 0 0.9480842 0.6141954 0.9994106 0.6141954 0.9480842 0.6364113 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.9480842 0.5031155 0.9994106 0.5031155 0.9480842 0.5253315 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.9480842 0.6364113 0.9994106 0.6364113 0.9480842 0.6586272 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.9480842 0.5475475 0.9994106 0.5475475 0.9480842 0.5697634 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.9480842 0.5919794 0.9994106 0.5919794 0.9480842 0.6141954 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0</float_array>
+          <technique_common>
+            <accessor source="#Cube_008-mesh-map-0-array" count="1716" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Cube_008-mesh-vertices">
+          <input semantic="POSITION" source="#Cube_008-mesh-positions"/>
+        </vertices>
+        <polylist material="hd_white-material" count="556">
+          <input semantic="VERTEX" source="#Cube_008-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Cube_008-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#Cube_008-mesh-map-0" offset="2" set="0"/>
+          <vcount>3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 </vcount>
+          <p>1 0 0 36 0 1 86 0 2 135 1 3 127 1 4 197 1 5 41 2 6 13 2 7 64 2 8 98 3 9 61 3 10 166 3 11 36 4 12 1 4 13 2 4 14 121 6 18 50 6 19 100 6 20 13 7 21 29 7 22 79 7 23 40 8 24 9 8 25 11 8 26 45 10 30 24 10 31 103 10 32 25 11 33 44 11 34 157 11 35 28 12 36 12 12 37 15 12 38 116 14 42 33 14 43 151 14 44 48 15 45 18 15 46 17 15 47 107 17 51 103 17 52 177 17 53 43 18 54 11 18 55 63 18 56 5 19 57 6 19 58 22 19 59 117 20 60 38 20 61 88 20 62 7 21 63 4 21 64 20 21 65 44 22 66 25 22 67 75 22 68 35 23 69 2 23 70 54 23 71 191 24 72 121 24 73 222 24 74 108 25 75 1 25 76 53 25 77 114 26 78 20 26 79 68 26 80 116 27 81 28 27 82 78 27 83 120 28 84 45 28 85 107 28 86 38 29 87 26 29 88 76 29 89 0 30 90 28 30 91 31 30 92 11 32 96 47 32 97 97 32 98 4 33 99 30 33 100 80 33 101 18 34 102 48 34 103 159 34 104 18 35 105 36 35 106 35 35 107 26 37 111 51 37 112 101 37 113 7 38 114 23 38 115 71 38 116 42 39 117 8 39 118 60 39 119 174 40 120 97 40 121 215 40 122 12 41 123 40 41 124 43 41 125 109 43 129 22 43 130 70 43 131 27 44 132 39 44 133 89 44 134 3 45 135 31 45 136 81 45 137 109 46 138 2 46 139 142 46 140 110 47 141 3 47 142 55 47 143 9 48 144 48 48 145 47 48 146 34 50 150 5 50 151 57 50 152 119 51 153 44 51 154 94 51 155 133 52 156 126 52 157 196 52 158 63 53 159 97 53 160 174 53 161 119 54 162 40 54 163 156 54 164 54 55 165 124 55 166 194 55 167 84 56 168 57 56 169 69 56 170 79 57 171 59 57 172 71 57 173 92 58 174 60 58 175 72 58 176 99 59 177 62 59 178 73 59 179 91 60 180 64 60 181 74 60 182 80 61 183 65 61 184 75 61 185 96 62 186 66 62 187 76 62 188 87 63 189 67 63 190 77 63 191 47 64 192 17 64 193 145 64 194 64 65 195 79 65 196 82 65 197 56 66 198 80 66 199 83 66 200 12 67 201 28 67 202 150 67 203 66 68 204 84 68 205 88 68 206 58 69 207 87 69 208 89 69 209 102 70 210 106 70 211 180 70 212 65 71 213 92 71 214 94 71 215 62 72 216 91 72 217 95 72 218 55 73 219 81 73 220 169 73 221 67 74 222 99 74 223 100 74 224 60 75 225 96 75 226 101 75 227 48 76 228 9 76 229 61 76 230 37 77 231 19 77 232 67 77 233 28 78 234 0 78 235 52 78 236 9 79 237 40 79 238 90 79 239 5 80 240 21 80 241 69 80 242 19 81 243 49 81 244 99 81 245 25 82 246 33 82 247 83 82 248 24 83 249 45 83 250 95 83 251 50 84 252 27 84 253 77 84 254 20 85 255 4 85 256 56 85 257 16 86 258 34 86 259 84 86 260 46 87 261 16 87 262 66 87 263 30 88 264 14 88 265 65 88 266 29 89 267 7 89 268 59 89 269 122 90 270 48 90 271 98 90 272 14 91 273 42 91 274 92 91 275 6 92 276 37 92 277 87 92 278 49 93 279 10 93 280 62 93 281 32 94 282 24 94 283 74 94 284 139 95 285 209 95 286 260 95 287 22 96 288 6 96 289 58 96 290 10 97 291 41 97 292 91 97 293 93 98 294 173 98 295 240 98 296 8 99 297 46 99 298 96 99 299 122 100 300 51 100 301 161 100 302 129 101 303 125 101 304 195 101 305 15 102 306 43 102 307 106 102 308 32 103 309 82 103 310 212 103 311 31 104 312 15 104 313 102 104 314 24 105 315 32 105 316 105 105 317 21 106 318 22 106 319 109 106 320 23 107 321 20 107 322 114 107 323 43 108 324 93 108 325 214 108 326 28 109 327 116 109 328 187 109 329 0 110 330 3 110 331 143 110 332 78 111 333 52 111 334 162 111 335 36 112 336 117 112 337 131 112 338 39 113 339 118 113 340 132 113 341 21 114 342 108 114 343 123 114 344 0 115 345 114 115 346 128 115 347 33 116 348 116 116 349 130 116 350 82 117 351 129 117 352 223 117 353 36 118 354 18 118 355 146 118 356 47 119 357 158 119 358 233 119 359 2 120 360 109 120 361 124 120 362 85 121 363 170 121 364 239 121 365 23 122 366 110 122 367 125 122 368 40 123 369 119 123 370 133 123 371 88 124 372 69 124 373 123 124 374 82 125 375 71 125 376 125 125 377 94 126 378 72 126 379 126 126 380 100 127 381 73 127 382 127 127 383 68 128 384 83 128 385 130 128 386 70 129 387 89 129 388 132 129 389 73 130 390 95 130 391 134 130 392 72 131 393 101 131 394 136 131 395 51 132 396 122 132 397 136 132 398 45 133 399 120 133 400 134 133 401 149 134 402 160 134 403 234 134 404 50 135 405 121 135 406 191 135 407 131 136 408 123 136 409 193 136 410 129 137 411 199 137 412 254 137 413 182 138 414 183 138 415 142 138 416 184 139 417 186 139 418 140 139 419 188 140 420 153 140 421 262 140 422 162 141 423 198 141 424 283 141 425 205 142 426 197 142 427 253 142 428 157 143 429 190 143 430 279 143 431 156 144 432 144 144 433 208 144 434 167 145 435 174 145 436 241 145 437 148 146 438 154 146 439 263 146 440 121 147 441 135 147 442 226 147 443 200 148 444 168 148 445 271 148 446 97 149 447 47 149 448 210 149 449 192 150 450 161 150 451 267 150 452 169 151 453 81 151 454 211 151 455 152 152 456 35 152 457 112 152 458 161 153 459 148 153 460 138 153 461 170 154 462 164 154 463 235 154 464 197 155 465 204 155 466 256 155 467 151 156 468 147 156 469 185 156 470 159 157 471 192 157 472 280 157 473 81 158 474 31 158 475 137 158 476 206 159 477 175 159 478 274 159 479 187 160 480 151 160 481 261 160 482 118 161 483 189 161 484 249 161 485 178 162 486 176 162 487 242 162 488 155 163 489 149 163 490 230 163 491 2 164 492 1 164 493 141 164 494 40 165 495 12 165 496 144 165 497 139 166 498 107 166 499 181 166 500 189 167 501 155 167 502 232 167 503 38 168 504 117 168 505 188 168 506 114 169 507 0 169 508 140 169 509 39 170 510 27 170 511 149 170 512 125 171 513 55 171 514 165 171 515 27 172 516 50 172 517 160 172 518 128 173 519 130 173 520 200 173 521 61 174 522 90 174 523 172 174 524 108 175 525 109 175 526 183 175 527 118 176 528 39 176 529 155 176 530 117 177 531 36 177 532 153 177 533 85 178 534 54 178 535 164 178 536 173 179 537 167 179 538 237 179 539 52 180 540 128 180 541 198 180 542 124 181 543 132 181 544 202 181 545 86 182 546 131 182 547 201 182 548 3 183 549 110 183 550 184 183 551 110 184 552 114 184 553 186 184 554 51 185 555 26 185 556 148 185 557 44 186 558 119 186 559 190 186 560 130 187 561 78 187 562 168 187 563 90 188 564 133 188 565 203 188 566 103 189 567 105 189 568 179 189 569 127 190 570 134 190 571 204 190 572 26 191 573 38 191 574 154 191 575 106 192 576 43 192 577 111 192 578 33 193 579 25 193 580 147 193 581 31 194 582 104 194 583 216 194 584 181 195 585 177 195 586 243 195 587 1 196 588 108 196 589 182 196 590 53 197 591 86 197 592 171 197 593 179 198 594 105 198 595 217 198 596 104 199 597 102 199 598 176 199 599 17 200 600 35 200 601 152 200 602 123 201 603 53 201 604 163 201 605 126 202 606 136 202 607 206 202 608 93 203 609 63 203 610 167 203 611 136 204 612 98 204 613 175 204 614 48 205 615 122 205 616 192 205 617 220 206 618 112 206 619 213 206 620 217 207 621 227 207 622 259 207 623 221 208 624 111 208 625 214 208 626 219 209 627 113 209 628 212 209 629 219 210 630 137 210 631 216 210 632 210 211 633 222 211 634 226 211 635 111 212 636 221 212 637 228 212 638 227 213 639 216 213 640 244 213 641 112 214 642 220 214 643 249 214 644 137 215 645 219 215 646 223 215 647 113 216 648 219 216 649 227 216 650 249 217 651 248 217 652 229 217 653 248 218 654 250 218 655 233 218 656 254 219 657 252 219 658 236 219 659 257 220 660 253 220 661 237 220 662 251 221 663 255 221 664 239 221 665 253 222 666 256 222 667 240 222 668 260 223 669 258 223 670 242 223 671 258 224 672 259 224 673 244 224 674 232 225 675 230 225 676 248 225 677 230 226 678 234 226 679 250 226 680 247 227 681 243 227 682 258 227 683 243 228 684 245 228 685 259 228 686 218 229 687 228 229 688 260 229 689 211 230 690 223 230 691 254 230 692 224 231 693 213 231 694 239 231 695 222 232 696 210 232 697 233 232 698 215 233 699 226 233 700 257 233 701 225 234 702 214 234 703 240 234 704 145 235 705 152 235 706 231 235 707 158 236 708 145 236 709 229 236 710 35 237 711 85 237 712 213 237 713 104 238 714 178 238 715 244 238 716 135 239 717 205 239 718 257 239 719 134 240 720 120 240 721 221 240 722 160 241 723 191 241 724 250 241 725 164 242 726 194 242 727 251 242 728 176 243 729 180 243 730 246 243 731 105 244 732 32 244 733 113 244 734 202 245 735 132 245 736 224 245 737 199 246 738 195 246 739 252 246 740 132 247 741 118 247 742 220 247 743 209 248 744 181 248 745 247 248 746 177 249 747 179 249 748 245 249 749 165 250 750 169 250 751 238 250 752 180 251 753 106 251 754 218 251 755 204 252 756 134 252 757 225 252 758 194 253 759 202 253 760 255 253 761 195 254 762 165 254 763 236 254 764 120 255 765 139 255 766 228 255 767 277 256 768 275 256 769 208 256 770 280 257 771 276 257 772 207 257 773 276 258 774 278 258 775 262 258 776 275 259 777 279 259 778 264 259 779 285 260 780 281 260 781 269 260 782 286 261 783 282 261 784 270 261 785 283 262 786 284 262 787 271 262 788 282 263 789 287 263 790 274 263 791 261 264 792 185 264 793 275 264 794 267 265 795 138 265 796 276 265 797 138 266 798 263 266 799 278 266 800 185 267 801 265 267 802 279 267 803 154 268 804 188 268 805 278 268 806 153 269 807 146 269 808 207 269 809 193 270 810 163 270 811 269 270 812 198 271 813 200 271 814 284 271 815 150 272 816 187 272 817 277 272 818 166 273 819 172 273 820 273 273 821 203 274 822 196 274 823 282 274 824 172 275 825 203 275 826 286 275 827 144 276 828 150 276 829 115 276 830 146 277 831 159 277 832 266 277 833 201 278 834 193 278 835 281 278 836 171 279 837 201 279 838 285 279 839 147 280 840 157 280 841 265 280 842 190 281 843 156 281 844 264 281 845 163 282 846 171 282 847 272 282 848 196 283 849 206 283 850 287 283 851 175 284 852 166 284 853 270 284 854 168 285 855 162 285 856 268 285 857 53 286 858 1 286 859 86 286 860 205 287 861 135 287 862 197 287 863 91 288 864 41 288 865 64 288 866 175 289 867 98 289 868 166 289 869 35 290 870 36 290 871 2 290 872 135 292 876 121 292 877 100 292 878 64 293 879 13 293 880 79 293 881 43 294 882 40 294 883 11 294 884 107 296 888 45 296 889 103 296 890 147 297 891 25 297 892 157 297 893 31 298 894 28 298 895 15 298 896 187 300 900 116 300 901 151 300 902 47 301 903 48 301 904 17 301 905 181 303 909 107 303 910 177 303 911 93 304 912 43 304 913 63 304 914 21 305 915 5 305 916 22 305 917 131 306 918 117 306 919 88 306 920 23 307 921 7 307 922 20 307 923 94 308 924 44 308 925 75 308 926 85 309 927 35 309 928 54 309 929 250 310 930 191 310 931 222 310 932 123 311 933 108 311 934 53 311 935 128 312 936 114 312 937 68 312 938 130 313 939 116 313 940 78 313 941 139 314 942 120 314 943 107 314 944 88 315 945 38 315 946 76 315 947 3 316 948 0 316 949 31 316 950 63 318 954 11 318 955 97 318 956 56 319 957 4 319 958 80 319 959 146 320 960 18 320 961 159 320 962 17 321 963 18 321 964 35 321 965 76 323 969 26 323 970 101 323 971 59 324 972 7 324 973 71 324 974 92 325 975 42 325 976 60 325 977 241 326 978 174 326 979 215 326 980 15 327 981 12 327 982 43 327 983 124 329 987 109 329 988 70 329 989 77 330 990 27 330 991 89 330 992 55 331 993 3 331 994 81 331 995 183 332 996 109 332 997 142 332 998 125 333 999 110 333 1000 55 333 1001 11 334 1002 9 334 1003 47 334 1004 84 336 1008 34 336 1009 57 336 1010 133 337 1011 119 337 1012 94 337 1013 203 338 1014 133 338 1015 196 338 1016 167 339 1017 63 339 1018 174 339 1019 190 340 1020 119 340 1021 156 340 1022 164 341 1023 54 341 1024 194 341 1025 88 342 1026 84 342 1027 69 342 1028 82 343 1029 79 343 1030 71 343 1031 94 344 1032 92 344 1033 72 344 1034 100 345 1035 99 345 1036 73 345 1037 95 346 1038 91 346 1039 74 346 1040 83 347 1041 80 347 1042 75 347 1043 101 348 1044 96 348 1045 76 348 1046 89 349 1047 87 349 1048 77 349 1049 158 350 1050 47 350 1051 145 350 1052 74 351 1053 64 351 1054 82 351 1055 68 352 1056 56 352 1057 83 352 1058 144 353 1059 12 353 1060 150 353 1061 76 354 1062 66 354 1063 88 354 1064 70 355 1065 58 355 1066 89 355 1067 176 356 1068 102 356 1069 180 356 1070 75 357 1071 65 357 1072 94 357 1073 73 358 1074 62 358 1075 95 358 1076 165 359 1077 55 359 1078 169 359 1079 77 360 1080 67 360 1081 100 360 1082 72 361 1083 60 361 1084 101 361 1085 98 362 1086 48 362 1087 61 362 1088 87 363 1089 37 363 1090 67 363 1091 78 364 1092 28 364 1093 52 364 1094 61 365 1095 9 365 1096 90 365 1097 57 366 1098 5 366 1099 69 366 1100 67 367 1101 19 367 1102 99 367 1103 75 368 1104 25 368 1105 83 368 1106 74 369 1107 24 369 1108 95 369 1109 100 370 1110 50 370 1111 77 370 1112 68 371 1113 20 371 1114 56 371 1115 66 372 1116 16 372 1117 84 372 1118 96 373 1119 46 373 1120 66 373 1121 80 374 1122 30 374 1123 65 374 1124 79 375 1125 29 375 1126 59 375 1127 136 376 1128 122 376 1129 98 376 1130 65 377 1131 14 377 1132 92 377 1133 58 378 1134 6 378 1135 87 378 1136 99 379 1137 49 379 1138 62 379 1139 82 380 1140 32 380 1141 74 380 1142 228 381 1143 139 381 1144 260 381 1145 70 382 1146 22 382 1147 58 382 1148 62 383 1149 10 383 1150 91 383 1151 214 384 1152 93 384 1153 240 384 1154 60 385 1155 8 385 1156 96 385 1157 192 386 1158 122 386 1159 161 386 1160 199 387 1161 129 387 1162 195 387 1163 102 388 1164 15 388 1165 106 388 1166 113 389 1167 32 389 1168 212 389 1169 104 390 1170 31 390 1171 102 390 1172 103 391 1173 24 391 1174 105 391 1175 108 392 1176 21 392 1177 109 392 1178 110 393 1179 23 393 1180 114 393 1181 111 394 1182 43 394 1183 214 394 1184 150 395 1185 28 395 1186 187 395 1187 140 396 1188 0 396 1189 143 396 1190 168 397 1191 78 397 1192 162 397 1193 86 398 1194 36 398 1195 131 398 1196 89 399 1197 39 399 1198 132 399 1199 69 400 1200 21 400 1201 123 400 1202 52 401 1203 0 401 1204 128 401 1205 83 402 1206 33 402 1207 130 402 1208 212 403 1209 82 403 1210 223 403 1211 153 404 1212 36 404 1213 146 404 1214 210 405 1215 47 405 1216 233 405 1217 54 406 1218 2 406 1219 124 406 1220 213 407 1221 85 407 1222 239 407 1223 71 408 1224 23 408 1225 125 408 1226 90 409 1227 40 409 1228 133 409 1229 131 410 1230 88 410 1231 123 410 1232 129 411 1233 82 411 1234 125 411 1235 133 412 1236 94 412 1237 126 412 1238 135 413 1239 100 413 1240 127 413 1241 128 414 1242 68 414 1243 130 414 1244 124 415 1245 70 415 1246 132 415 1247 127 416 1248 73 416 1249 134 416 1250 126 417 1251 72 417 1252 136 417 1253 101 418 1254 51 418 1255 136 418 1256 95 419 1257 45 419 1258 134 419 1259 230 420 1260 149 420 1261 234 420 1262 160 421 1263 50 421 1264 191 421 1265 201 422 1266 131 422 1267 193 422 1268 223 423 1269 129 423 1270 254 423 1271 141 424 1272 182 424 1273 142 424 1274 143 425 1275 184 425 1276 140 425 1277 278 426 1278 188 426 1279 262 426 1280 268 427 1281 162 427 1282 283 427 1283 257 428 1284 205 428 1285 253 428 1286 265 429 1287 157 429 1288 279 429 1289 264 430 1290 156 430 1291 208 430 1292 237 431 1293 167 431 1294 241 431 1295 138 432 1296 148 432 1297 263 432 1298 222 433 1299 121 433 1300 226 433 1301 284 434 1302 200 434 1303 271 434 1304 215 435 1305 97 435 1306 210 435 1307 280 436 1308 192 436 1309 267 436 1310 238 437 1311 169 437 1312 211 437 1313 231 438 1314 152 438 1315 112 438 1316 267 439 1317 161 439 1318 138 439 1319 239 440 1320 170 440 1321 235 440 1322 253 441 1323 197 441 1324 256 441 1325 261 442 1326 151 442 1327 185 442 1328 266 443 1329 159 443 1330 280 443 1331 211 444 1332 81 444 1333 137 444 1334 287 445 1335 206 445 1336 274 445 1337 277 446 1338 187 446 1339 261 446 1340 220 447 1341 118 447 1342 249 447 1343 244 448 1344 178 448 1345 242 448 1346 232 449 1347 155 449 1348 230 449 1349 142 450 1350 2 450 1351 141 450 1352 156 451 1353 40 451 1354 144 451 1355 209 452 1356 139 452 1357 181 452 1358 249 453 1359 189 453 1360 232 453 1361 154 454 1362 38 454 1363 188 454 1364 186 455 1365 114 455 1366 140 455 1367 155 456 1368 39 456 1369 149 456 1370 195 457 1371 125 457 1372 165 457 1373 149 458 1374 27 458 1375 160 458 1376 198 459 1377 128 459 1378 200 459 1379 166 460 1380 61 460 1381 172 460 1382 182 461 1383 108 461 1384 183 461 1385 189 462 1386 118 462 1387 155 462 1388 188 463 1389 117 463 1390 153 463 1391 170 464 1392 85 464 1393 164 464 1394 240 465 1395 173 465 1396 237 465 1397 162 466 1398 52 466 1399 198 466 1400 194 467 1401 124 467 1402 202 467 1403 171 468 1404 86 468 1405 201 468 1406 143 469 1407 3 469 1408 184 469 1409 184 470 1410 110 470 1411 186 470 1412 161 471 1413 51 471 1414 148 471 1415 157 472 1416 44 472 1417 190 472 1418 200 473 1419 130 473 1420 168 473 1421 172 474 1422 90 474 1423 203 474 1424 177 475 1425 103 475 1426 179 475 1427 197 476 1428 127 476 1429 204 476 1430 148 477 1431 26 477 1432 154 477 1433 218 478 1434 106 478 1435 111 478 1436 151 479 1437 33 479 1438 147 479 1439 137 480 1440 31 480 1441 216 480 1442 247 481 1443 181 481 1444 243 481 1445 141 482 1446 1 482 1447 182 482 1448 163 483 1449 53 483 1450 171 483 1451 245 484 1452 179 484 1453 217 484 1454 178 485 1455 104 485 1456 176 485 1457 145 486 1458 17 486 1459 152 486 1460 193 487 1461 123 487 1462 163 487 1463 196 488 1464 126 488 1465 206 488 1466 173 489 1467 93 489 1468 167 489 1469 206 490 1470 136 490 1471 175 490 1472 159 491 1473 48 491 1474 192 491 1475 224 492 1476 220 492 1477 213 492 1478 245 493 1479 217 493 1480 259 493 1481 225 494 1482 221 494 1483 214 494 1484 223 495 1485 219 495 1486 212 495 1487 227 496 1488 219 496 1489 216 496 1490 215 497 1491 210 497 1492 226 497 1493 218 498 1494 111 498 1495 228 498 1496 259 499 1497 227 499 1498 244 499 1499 231 500 1500 112 500 1501 249 500 1502 211 501 1503 137 501 1504 223 501 1505 217 502 1506 113 502 1507 227 502 1508 231 503 1509 249 503 1510 229 503 1511 229 504 1512 248 504 1513 233 504 1514 238 505 1515 254 505 1516 236 505 1517 241 506 1518 257 506 1519 237 506 1520 235 507 1521 251 507 1522 239 507 1523 237 508 1524 253 508 1525 240 508 1526 246 509 1527 260 509 1528 242 509 1529 242 510 1530 258 510 1531 244 510 1532 249 511 1533 232 511 1534 248 511 1535 248 512 1536 230 512 1537 250 512 1538 260 513 1539 247 513 1540 258 513 1541 258 514 1542 243 514 1543 259 514 1544 246 515 1545 218 515 1546 260 515 1547 238 516 1548 211 516 1549 254 516 1550 255 517 1551 224 517 1552 239 517 1553 250 518 1554 222 518 1555 233 518 1556 241 519 1557 215 519 1558 257 519 1559 256 520 1560 225 520 1561 240 520 1562 229 521 1563 145 521 1564 231 521 1565 233 522 1566 158 522 1567 229 522 1568 112 523 1569 35 523 1570 213 523 1571 216 524 1572 104 524 1573 244 524 1574 226 525 1575 135 525 1576 257 525 1577 225 526 1578 134 526 1579 221 526 1580 234 527 1581 160 527 1582 250 527 1583 235 528 1584 164 528 1585 251 528 1586 242 529 1587 176 529 1588 246 529 1589 217 530 1590 105 530 1591 113 530 1592 255 531 1593 202 531 1594 224 531 1595 254 532 1596 199 532 1597 252 532 1598 224 533 1599 132 533 1600 220 533 1601 260 534 1602 209 534 1603 247 534 1604 243 535 1605 177 535 1606 245 535 1607 236 536 1608 165 536 1609 238 536 1610 246 537 1611 180 537 1612 218 537 1613 256 538 1614 204 538 1615 225 538 1616 251 539 1617 194 539 1618 255 539 1619 252 540 1620 195 540 1621 236 540 1622 221 541 1623 120 541 1624 228 541 1625 115 542 1626 277 542 1627 208 542 1628 266 543 1629 280 543 1630 207 543 1631 207 544 1632 276 544 1633 262 544 1634 208 545 1635 275 545 1636 264 545 1637 272 546 1638 285 546 1639 269 546 1640 273 547 1641 286 547 1642 270 547 1643 268 548 1644 283 548 1645 271 548 1646 270 549 1647 282 549 1648 274 549 1649 277 550 1650 261 550 1651 275 550 1652 280 551 1653 267 551 1654 276 551 1655 276 552 1656 138 552 1657 278 552 1658 275 553 1659 185 553 1660 279 553 1661 263 554 1662 154 554 1663 278 554 1664 262 555 1665 153 555 1666 207 555 1667 281 556 1668 193 556 1669 269 556 1670 283 557 1671 198 557 1672 284 557 1673 115 558 1674 150 558 1675 277 558 1676 270 559 1677 166 559 1678 273 559 1679 286 560 1680 203 560 1681 282 560 1682 273 561 1683 172 561 1684 286 561 1685 208 562 1686 144 562 1687 115 562 1688 207 563 1689 146 563 1690 266 563 1691 285 564 1692 201 564 1693 281 564 1694 272 565 1695 171 565 1696 285 565 1697 185 566 1698 147 566 1699 265 566 1700 279 567 1701 190 567 1702 264 567 1703 269 568 1704 163 568 1705 272 568 1706 282 569 1707 196 569 1708 287 569 1709 274 570 1710 175 570 1711 270 570 1712 271 571 1713 168 571 1714 268 571 1715</p>
+        </polylist>
+        <polylist material="hd_top-material" count="16">
+          <input semantic="VERTEX" source="#Cube_008-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Cube_008-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#Cube_008-mesh-map-0" offset="2" set="0"/>
+          <vcount>3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 </vcount>
+          <p>37 5 15 6 5 16 5 5 17 41 9 27 10 9 28 8 9 29 29 13 39 13 13 40 14 13 41 49 16 48 19 16 49 16 16 50 7 31 93 29 31 94 30 31 95 19 36 108 37 36 109 34 36 110 13 42 126 41 42 127 42 42 128 10 49 147 49 49 148 46 49 149 34 291 873 37 291 874 5 291 875 42 295 885 41 295 886 8 295 887 30 299 897 29 299 898 14 299 899 46 302 906 49 302 907 16 302 908 4 317 951 7 317 952 30 317 953 16 322 966 19 322 967 34 322 968 14 328 984 13 328 985 42 328 986 8 335 1005 10 335 1006 46 335 1007</p>
+        </polylist>
+      </mesh>
+    </geometry>
+    <geometry id="Cube_007-mesh" name="Cube.007">
+      <mesh>
+        <source id="Cube_007-mesh-positions">
+          <float_array id="Cube_007-mesh-positions-array" count="24">-1 -1 -1 -1 1 -1 1 1 -1 1 -1 -1 -1 -1 1 -1 1 1 1 1 1 1 -1 1</float_array>
+          <technique_common>
+            <accessor source="#Cube_007-mesh-positions-array" count="8" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Cube_007-mesh-normals">
+          <float_array id="Cube_007-mesh-normals-array" count="36">-1 0 0 0 1 0 1 0 0 0 -1 0 0 0 -1 0 0 1 -1 0 0 0 1 0 1 0 0 0 -1 0 0 0 -1 0 0 1</float_array>
+          <technique_common>
+            <accessor source="#Cube_007-mesh-normals-array" count="12" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Cube_007-mesh-map-0">
+          <float_array id="Cube_007-mesh-map-0-array" count="72">0.7895041 0.07256937 0.8227038 0.07256937 0.8227038 0.03533613 0.7911251 0.08406484 0.8198658 0.08406484 0.8198658 0.05183231 0.8193316 0.07050991 0.7897345 0.07050991 0.7897345 0.03731679 0.7827972 0.5464302 0.7010449 0.5464302 0.7010449 0.330985 0 0 0 0 0 0 0.869189 9.79483e-4 0.869189 0.1171848 0.7754662 0.1171848 0.7895041 0.03533613 0.7895041 0.07256937 0.8227038 0.03533613 0.7911251 0.05183231 0.7911251 0.08406484 0.8198658 0.05183231 0.8193316 0.03731679 0.8193316 0.07050991 0.7897345 0.03731679 0.7827972 0.330985 0.7827972 0.5464302 0.7010449 0.330985 0 0 0 0 0 0 0.7754662 9.79483e-4 0.869189 9.79483e-4 0.7754662 0.1171848</float_array>
+          <technique_common>
+            <accessor source="#Cube_007-mesh-map-0-array" count="36" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Cube_007-mesh-vertices">
+          <input semantic="POSITION" source="#Cube_007-mesh-positions"/>
+        </vertices>
+        <polylist material="audio_silver-material" count="2">
+          <input semantic="VERTEX" source="#Cube_007-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Cube_007-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#Cube_007-mesh-map-0" offset="2" set="0"/>
+          <vcount>3 3 </vcount>
+          <p>0 4 12 1 4 13 2 4 14 3 10 30 0 10 31 2 10 32</p>
+        </polylist>
+        <polylist material="audio_front-material" count="2">
+          <input semantic="VERTEX" source="#Cube_007-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Cube_007-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#Cube_007-mesh-map-0" offset="2" set="0"/>
+          <vcount>3 3 </vcount>
+          <p>7 3 9 4 3 10 0 3 11 3 9 27 7 9 28 0 9 29</p>
+        </polylist>
+        <polylist material="audio_top-material" count="8">
+          <input semantic="VERTEX" source="#Cube_007-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Cube_007-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#Cube_007-mesh-map-0" offset="2" set="0"/>
+          <vcount>3 3 3 3 3 3 3 3 </vcount>
+          <p>4 0 0 5 0 1 1 0 2 5 1 3 6 1 4 2 1 5 6 2 6 7 2 7 3 2 8 7 5 15 6 5 16 5 5 17 0 6 18 4 6 19 1 6 20 1 7 21 5 7 22 2 7 23 2 8 24 6 8 25 3 8 26 4 11 33 7 11 34 5 11 35</p>
+        </polylist>
+      </mesh>
+    </geometry>
+    <geometry id="Cube_006-mesh" name="Cube.006">
+      <mesh>
+        <source id="Cube_006-mesh-positions">
+          <float_array id="Cube_006-mesh-positions-array" count="24">-1 -1 -1 -1 1 -1 1 1 -1 1 -1 -1 -1 -1 1 -1 1 1 1 1 1 1 -1 1</float_array>
+          <technique_common>
+            <accessor source="#Cube_006-mesh-positions-array" count="8" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Cube_006-mesh-normals">
+          <float_array id="Cube_006-mesh-normals-array" count="36">-1 0 0 0 1 0 1 0 0 0 -1 0 0 0 -1 0 0 1 -1 0 0 0 1 0 1 0 0 0 -1 0 0 0 -1 0 0 1</float_array>
+          <technique_common>
+            <accessor source="#Cube_006-mesh-normals-array" count="12" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Cube_006-mesh-map-0">
+          <float_array id="Cube_006-mesh-map-0-array" count="72">0.6661708 0.121239 0.7395388 0.121239 0.7395388 0.03895711 0.6704119 0.105579 0.7393385 0.105579 0.7393385 0.02827835 0.7395076 0.1090881 0.6657219 0.1090881 0.6657219 0.0263378 0.6845607 0.4471178 0.5794807 0.4471178 0.5794807 0.3298003 0 0 0 0 0 0 0.7455562 -0.002041757 0.7455562 0.1457973 0.6317875 0.1457973 0.6661708 0.03895711 0.6661708 0.121239 0.7395388 0.03895711 0.6704119 0.02827835 0.6704119 0.105579 0.7393385 0.02827835 0.7395076 0.0263378 0.7395076 0.1090881 0.6657219 0.0263378 0.6845607 0.3298003 0.6845607 0.4471178 0.5794807 0.3298003 0 0 0 0 0 0 0.6317875 -0.002041757 0.7455562 -0.002041757 0.6317875 0.1457973</float_array>
+          <technique_common>
+            <accessor source="#Cube_006-mesh-map-0-array" count="36" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Cube_006-mesh-vertices">
+          <input semantic="POSITION" source="#Cube_006-mesh-positions"/>
+        </vertices>
+        <polylist material="network_silver-material" count="2">
+          <input semantic="VERTEX" source="#Cube_006-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Cube_006-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#Cube_006-mesh-map-0" offset="2" set="0"/>
+          <vcount>3 3 </vcount>
+          <p>0 4 12 1 4 13 2 4 14 3 10 30 0 10 31 2 10 32</p>
+        </polylist>
+        <polylist material="network_top-material" count="8">
+          <input semantic="VERTEX" source="#Cube_006-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Cube_006-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#Cube_006-mesh-map-0" offset="2" set="0"/>
+          <vcount>3 3 3 3 3 3 3 3 </vcount>
+          <p>4 0 0 5 0 1 1 0 2 5 1 3 6 1 4 2 1 5 6 2 6 7 2 7 3 2 8 7 5 15 6 5 16 5 5 17 0 6 18 4 6 19 1 6 20 1 7 21 5 7 22 2 7 23 2 8 24 6 8 25 3 8 26 4 11 33 7 11 34 5 11 35</p>
+        </polylist>
+        <polylist material="network_front-material" count="2">
+          <input semantic="VERTEX" source="#Cube_006-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Cube_006-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#Cube_006-mesh-map-0" offset="2" set="0"/>
+          <vcount>3 3 </vcount>
+          <p>7 3 9 4 3 10 0 3 11 3 9 27 7 9 28 0 9 29</p>
+        </polylist>
+      </mesh>
+    </geometry>
+    <geometry id="Cube_005-mesh" name="Cube.005">
+      <mesh>
+        <source id="Cube_005-mesh-positions">
+          <float_array id="Cube_005-mesh-positions-array" count="24">-1 -1 -1 -1 1 -1 1 1 -1 1 -1 -1 -1 -1 1 -1 1 1 1 1 1 1 -1 1</float_array>
+          <technique_common>
+            <accessor source="#Cube_005-mesh-positions-array" count="8" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Cube_005-mesh-normals">
+          <float_array id="Cube_005-mesh-normals-array" count="36">-1 0 0 0 1 0 1 0 0 0 -1 0 0 0 -1 0 0 1 -1 0 0 0 1 0 1 0 0 0 -1 0 0 0 -1 0 0 1</float_array>
+          <technique_common>
+            <accessor source="#Cube_005-mesh-normals-array" count="12" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Cube_005-mesh-map-0">
+          <float_array id="Cube_005-mesh-map-0-array" count="72">0.5776753 0.03425002 0.5965599 0.03425002 0.5965599 0.1088226 0.5670638 0.1028547 0.6048181 0.1028547 0.6048181 0.02910399 0.6003418 0.1077058 0.5704402 0.1077058 0.5704402 0.03188329 0.5602975 0.4467983 0.5220983 0.4467983 0.5220983 0.3317216 0 0 0 0 0 0 0.6039355 0.001045048 0.6039355 0.1278483 0.5697374 0.1278483 0.5776753 0.1088226 0.5776753 0.03425002 0.5965599 0.1088226 0.5670638 0.02910399 0.5670638 0.1028547 0.6048181 0.02910399 0.6003418 0.03188329 0.6003418 0.1077058 0.5704402 0.03188329 0.5602975 0.3317216 0.5602975 0.4467983 0.5220983 0.3317216 0 0 0 0 0 0 0.5697374 0.001045048 0.6039355 0.001045048 0.5697374 0.1278483</float_array>
+          <technique_common>
+            <accessor source="#Cube_005-mesh-map-0-array" count="36" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Cube_005-mesh-vertices">
+          <input semantic="POSITION" source="#Cube_005-mesh-positions"/>
+        </vertices>
+        <polylist material="usb_silver-material" count="2">
+          <input semantic="VERTEX" source="#Cube_005-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Cube_005-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#Cube_005-mesh-map-0" offset="2" set="0"/>
+          <vcount>3 3 </vcount>
+          <p>0 4 12 1 4 13 2 4 14 3 10 30 0 10 31 2 10 32</p>
+        </polylist>
+        <polylist material="usb_front-material" count="2">
+          <input semantic="VERTEX" source="#Cube_005-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Cube_005-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#Cube_005-mesh-map-0" offset="2" set="0"/>
+          <vcount>3 3 </vcount>
+          <p>7 3 9 4 3 10 0 3 11 3 9 27 7 9 28 0 9 29</p>
+        </polylist>
+        <polylist material="usb_top-material" count="8">
+          <input semantic="VERTEX" source="#Cube_005-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Cube_005-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#Cube_005-mesh-map-0" offset="2" set="0"/>
+          <vcount>3 3 3 3 3 3 3 3 </vcount>
+          <p>4 0 0 5 0 1 1 0 2 5 1 3 6 1 4 2 1 5 6 2 6 7 2 7 3 2 8 7 5 15 6 5 16 5 5 17 0 6 18 4 6 19 1 6 20 1 7 21 5 7 22 2 7 23 2 8 24 6 8 25 3 8 26 4 11 33 7 11 34 5 11 35</p>
+        </polylist>
+      </mesh>
+    </geometry>
+    <geometry id="Cube_004-mesh" name="Cube.004">
+      <mesh>
+        <source id="Cube_004-mesh-positions">
+          <float_array id="Cube_004-mesh-positions-array" count="24">-1 -1 -1 -1 1 -1 1 1 -1 1 -1 -1 -1 -1 1 -1 1 1 1 1 1 1 -1 1</float_array>
+          <technique_common>
+            <accessor source="#Cube_004-mesh-positions-array" count="8" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Cube_004-mesh-normals">
+          <float_array id="Cube_004-mesh-normals-array" count="36">-1 0 0 0 1 0 1 0 0 0 -1 0 0 0 -1 0 0 1 -1 0 0 0 1 0 1 0 0 0 -1 0 0 0 -1 0 0 1</float_array>
+          <technique_common>
+            <accessor source="#Cube_004-mesh-normals-array" count="12" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Cube_004-mesh-map-0">
+          <float_array id="Cube_004-mesh-map-0-array" count="72">0.4502402 0.04989391 0.4860196 0.04989391 0.4860196 0.009767532 0.450396 0.04637056 0.4899913 0.04637056 0.4899913 0.001964449 0.489878 0.04845839 0.4494169 0.04845839 0.4494169 0.00308144 0.4941953 0.3882147 0.3814892 0.3882147 0.3814892 0.3254755 0 0 0 0 0 0 0.5230213 -0.00104326 0.5230213 0.07065951 0.4189599 0.07065951 0.4502402 0.009767532 0.4502402 0.04989391 0.4860196 0.009767532 0.450396 0.001964449 0.450396 0.04637056 0.4899913 0.001964449 0.489878 0.00308144 0.489878 0.04845839 0.4494169 0.00308144 0.4941953 0.3254755 0.4941953 0.3882147 0.3814892 0.3254755 0 0 0 0 0 0 0.4189599 -0.00104326 0.5230213 -0.00104326 0.4189599 0.07065951</float_array>
+          <technique_common>
+            <accessor source="#Cube_004-mesh-map-0-array" count="36" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Cube_004-mesh-vertices">
+          <input semantic="POSITION" source="#Cube_004-mesh-positions"/>
+        </vertices>
+        <polylist material="hdmi_silver-material" count="2">
+          <input semantic="VERTEX" source="#Cube_004-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Cube_004-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#Cube_004-mesh-map-0" offset="2" set="0"/>
+          <vcount>3 3 </vcount>
+          <p>0 4 12 1 4 13 2 4 14 3 10 30 0 10 31 2 10 32</p>
+        </polylist>
+        <polylist material="hdmi_top-material" count="8">
+          <input semantic="VERTEX" source="#Cube_004-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Cube_004-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#Cube_004-mesh-map-0" offset="2" set="0"/>
+          <vcount>3 3 3 3 3 3 3 3 </vcount>
+          <p>4 0 0 5 0 1 1 0 2 5 1 3 6 1 4 2 1 5 6 2 6 7 2 7 3 2 8 7 5 15 6 5 16 5 5 17 0 6 18 4 6 19 1 6 20 1 7 21 5 7 22 2 7 23 2 8 24 6 8 25 3 8 26 4 11 33 7 11 34 5 11 35</p>
+        </polylist>
+        <polylist material="hdmi_front-material" count="2">
+          <input semantic="VERTEX" source="#Cube_004-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Cube_004-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#Cube_004-mesh-map-0" offset="2" set="0"/>
+          <vcount>3 3 </vcount>
+          <p>7 3 9 4 3 10 0 3 11 3 9 27 7 9 28 0 9 29</p>
+        </polylist>
+      </mesh>
+    </geometry>
     <geometry id="Cube_001-mesh" name="Cube.001">
       <mesh>
         <source id="Cube_001-mesh-positions">
@@ -703,10 +1913,186 @@
         </polylist>
       </mesh>
     </geometry>
+    <geometry id="Cube_003-mesh" name="Cube.003">
+      <mesh>
+        <source id="Cube_003-mesh-positions">
+          <float_array id="Cube_003-mesh-positions-array" count="24">-1 -1 -1 -1 1 -1 1 1 -1 1 -1 -1 -1 -1 1 -1 1 1 1 1 1 1 -1 1</float_array>
+          <technique_common>
+            <accessor source="#Cube_003-mesh-positions-array" count="8" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Cube_003-mesh-normals">
+          <float_array id="Cube_003-mesh-normals-array" count="36">-1 0 0 0 1 0 1 0 0 0 -1 0 0 0 -1 0 0 1 -1 0 0 0 1 0 1 0 0 0 -1 0 0 0 -1 0 0 1</float_array>
+          <technique_common>
+            <accessor source="#Cube_003-mesh-normals-array" count="12" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Cube_003-mesh-map-0">
+          <float_array id="Cube_003-mesh-map-0-array" count="72">0.7861548 0.6294846 0.8785731 0.6294846 0.8785731 0.5288301 0.2563139 0.08723312 0.312357 0.08723312 0.312357 0.02438104 0.2188912 0.6300931 0.1237325 0.6300931 0.1237325 0.5267564 0.3623267 0.4380649 0.1642819 0.4380649 0.1642819 0.3274321 0 0 0 0 0 0 0.384003 -0.003198742 0.384003 0.1042551 0.1695538 0.1042551 0.7861548 0.5288301 0.7861548 0.6294846 0.8785731 0.5288301 0.2563139 0.02438104 0.2563139 0.08723312 0.312357 0.02438104 0.2188912 0.5267564 0.2188912 0.6300931 0.1237325 0.5267564 0.3623267 0.3274321 0.3623267 0.4380649 0.1642819 0.3274321 0 0 0 0 0 0 0.1695538 -0.003198742 0.384003 -0.003198742 0.1695538 0.1042551</float_array>
+          <technique_common>
+            <accessor source="#Cube_003-mesh-map-0-array" count="36" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Cube_003-mesh-vertices">
+          <input semantic="POSITION" source="#Cube_003-mesh-positions"/>
+        </vertices>
+        <polylist material="db9_black-material" count="2">
+          <input semantic="VERTEX" source="#Cube_003-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Cube_003-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#Cube_003-mesh-map-0" offset="2" set="0"/>
+          <vcount>3 3 </vcount>
+          <p>0 4 12 1 4 13 2 4 14 3 10 30 0 10 31 2 10 32</p>
+        </polylist>
+        <polylist material="db9_front-material" count="2">
+          <input semantic="VERTEX" source="#Cube_003-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Cube_003-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#Cube_003-mesh-map-0" offset="2" set="0"/>
+          <vcount>3 3 </vcount>
+          <p>7 3 9 4 3 10 0 3 11 3 9 27 7 9 28 0 9 29</p>
+        </polylist>
+        <polylist material="db9_top-material" count="4">
+          <input semantic="VERTEX" source="#Cube_003-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Cube_003-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#Cube_003-mesh-map-0" offset="2" set="0"/>
+          <vcount>3 3 3 3 </vcount>
+          <p>5 1 3 6 1 4 2 1 5 7 5 15 6 5 16 5 5 17 1 7 21 5 7 22 2 7 23 4 11 33 7 11 34 5 11 35</p>
+        </polylist>
+        <polylist material="db9_side-material" count="2">
+          <input semantic="VERTEX" source="#Cube_003-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Cube_003-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#Cube_003-mesh-map-0" offset="2" set="0"/>
+          <vcount>3 3 </vcount>
+          <p>4 0 0 5 0 1 1 0 2 0 6 18 4 6 19 1 6 20</p>
+        </polylist>
+        <polylist material="db9_left-side-material" count="2">
+          <input semantic="VERTEX" source="#Cube_003-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Cube_003-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#Cube_003-mesh-map-0" offset="2" set="0"/>
+          <vcount>3 3 </vcount>
+          <p>6 2 6 7 2 7 3 2 8 2 8 24 6 8 25 3 8 26</p>
+        </polylist>
+      </mesh>
+    </geometry>
   </library_geometries>
   <library_controllers/>
   <library_visual_scenes>
     <visual_scene id="Scene" name="Scene">
+      <node id="power" name="power" type="NODE">
+        <matrix sid="transform">0.048 0 0 0.1057532 0 0.0525 0 0.5472982 0 0 0.03 0.04068372 0 0 0 1</matrix>
+        <instance_geometry url="#Cube_009-mesh">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="power_silver-material" target="#power_silver-material">
+                <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+              <instance_material symbol="power_front-material" target="#power_front-material">
+                <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+              <instance_material symbol="power_top-material" target="#power_top-material">
+                <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="Cube_006" name="Cube_006" type="NODE">
+        <matrix sid="transform">0.041 0 0 0.5518652 0 0.1115 0 0.1091924 0 0 0.085 0.09560139 0 0 0 1</matrix>
+        <instance_geometry url="#Cube_008-mesh">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="hd_white-material" target="#hd_white-material">
+                <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+              <instance_material symbol="hd_top-material" target="#hd_top-material">
+                <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="audio" name="audio" type="NODE">
+        <matrix sid="transform">0.0605 0 0 0.3664338 0 0.071 0 -0.5288453 0 0 0.125 0.1353496 0 0 0 1</matrix>
+        <instance_geometry url="#Cube_007-mesh">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="audio_silver-material" target="#audio_silver-material">
+                <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+              <instance_material symbol="audio_front-material" target="#audio_front-material">
+                <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+              <instance_material symbol="audio_top-material" target="#audio_top-material">
+                <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="nework" name="nework" type="NODE">
+        <matrix sid="transform">0.0715 0 0 0.1831362 0 0.086 0 -0.5152543 0 0 0.06 0.07063843 0 0 0 1</matrix>
+        <instance_geometry url="#Cube_006-mesh">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="network_silver-material" target="#network_silver-material">
+                <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+              <instance_material symbol="network_top-material" target="#network_top-material">
+                <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+              <instance_material symbol="network_front-material" target="#network_front-material">
+                <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="usb" name="usb" type="NODE">
+        <matrix sid="transform">0.024 0 0 0.04469834 0 0.0725 0 -0.5276241 0 0 0.065 0.07526337 0 0 0 1</matrix>
+        <instance_geometry url="#Cube_005-mesh">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="usb_silver-material" target="#usb_silver-material">
+                <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+              <instance_material symbol="usb_front-material" target="#usb_front-material">
+                <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+              <instance_material symbol="usb_top-material" target="#usb_top-material">
+                <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="hdmi" name="hdmi" type="NODE">
+        <matrix sid="transform">0.0675 0 0 -0.1137038 0 0.045 0 -0.5573885 0 0 0.035 0.04578828 0 0 0 1</matrix>
+        <instance_geometry url="#Cube_004-mesh">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="hdmi_silver-material" target="#hdmi_silver-material">
+                <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+              <instance_material symbol="hdmi_top-material" target="#hdmi_top-material">
+                <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+              <instance_material symbol="hdmi_front-material" target="#hdmi_front-material">
+                <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
       <node id="Camera" name="Camera" type="NODE">
         <matrix sid="transform">0.6858805 -0.3173701 0.6548619 7.481132 0.7276338 0.3124686 -0.6106656 -6.50764 -0.01081678 0.8953432 0.4452454 5.343665 0 0 0 1</matrix>
         <instance_camera url="#Camera-camera"/>
@@ -733,7 +2119,7 @@
           </bind_material>
         </instance_geometry>
       </node>
-      <node id="Cube_001" name="Cube_001" type="NODE">
+      <node id="header" name="header" type="NODE">
         <matrix sid="transform">0.05 0 0 -0.548002 0 0.239 0 -0.1032651 0 0 0.025 0.03426552 0 0 0 1</matrix>
         <instance_geometry url="#Cube_002-mesh">
           <bind_material>
@@ -767,7 +2153,7 @@
           </bind_material>
         </instance_geometry>
       </node>
-      <node id="Cube_002" name="Cube_002" type="NODE">
+      <node id="jtag" name="jtag" type="NODE">
         <matrix sid="transform">-1.39191e-7 -0.0335 0 -0.564047 0.1585 -2.94189e-8 0 0.3581122 0 0 0.04 0.0501712 0 0 0 1</matrix>
         <instance_geometry url="#Cube-mesh">
           <bind_material>
@@ -781,6 +2167,34 @@
             </technique_common>
           </bind_material>
         </instance_geometry>
+      </node>
+      <node id="db9" name="db9" type="NODE">
+        <matrix sid="transform">0.147 0 0 -0.3743609 0 0.06 0 -0.5390571 0 0 0.06 0.07068738 0 0 0 1</matrix>
+        <instance_geometry url="#Cube_003-mesh">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="db9_black-material" target="#db9_black-material">
+                <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+              <instance_material symbol="db9_front-material" target="#db9_front-material">
+                <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+              <instance_material symbol="db9_top-material" target="#db9_top-material">
+                <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+              <instance_material symbol="db9_side-material" target="#db9_side-material">
+                <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+              <instance_material symbol="db9_left-side-material" target="#db9_left-side-material">
+                <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+      <node id="Point_001" name="Point_001" type="NODE">
+        <matrix sid="transform">1 0 0 0.3447018 0 1 0 -3.101577 0 0 1 3.072122 0 0 0 1</matrix>
+        <instance_light url="#Point_001-light"/>
       </node>
     </visual_scene>
   </library_visual_scenes>

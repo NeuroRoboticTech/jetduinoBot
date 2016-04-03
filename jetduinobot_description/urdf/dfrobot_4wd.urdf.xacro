@@ -71,6 +71,7 @@
   <xacro:property name="wheel_length" value="0.025" />
   <xacro:property name="wheel_radius" value="0.029" />
   <xacro:property name="wheel_mass" value="0.030" />
+  <xacro:property name="wheel_separation" value="0.148" />
 
   <!-- rear wheels -->
   <!-- right rear wheel -->
@@ -193,8 +194,8 @@
       <rightFrontJoint>right_front_wheel_joint</rightFrontJoint>
       <leftRearJoint>left_rear_wheel_joint</leftRearJoint>
       <rightRearJoint>right_rear_wheel_joint</rightRearJoint>
-      <wheelSeparation>0.148</wheelSeparation>
-      <wheelDiameter>0.065</wheelDiameter>
+      <wheelSeparation>${wheel_separation}</wheelSeparation>
+      <wheelDiameter>${2 * wheel_radius}</wheelDiameter>
       <robotBaseFrame>base_link</robotBaseFrame>
       <torque>20</torque>
     </plugin>

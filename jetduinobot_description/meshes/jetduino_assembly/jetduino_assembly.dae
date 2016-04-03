@@ -283,6 +283,12 @@
     <image id="hd_front_png" name="hd_front_png">
       <init_from>hd_front.png</init_from>
     </image>
+    <image id="ArduinoM_jpg" name="ArduinoM_jpg">
+      <init_from>ArduinoM.jpg</init_from>
+    </image>
+    <image id="Arduin01_jpg" name="Arduin01_jpg">
+      <init_from>Arduin01.jpg</init_from>
+    </image>
   </library_images>
   <library_effects>
     <effect id="standoff_color_013-effect">

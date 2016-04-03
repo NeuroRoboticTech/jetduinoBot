@@ -8,6 +8,7 @@
   <xacro:include filename="$(find jetduinobot_description)/urdf/jetduinobot_properties.urdf.xacro"/>
   <!-- Bases -->
   <xacro:include filename="$(find jetduinobot_description)/urdf/dfrobot_4wd.urdf.xacro"/> 
+  <xacro:include filename="$(find jetduinobot_description)/urdf/jetduino.urdf.xacro"/> 
   <!-- Stacks -->
   <!-- 3D Sensors -->
 </robot>

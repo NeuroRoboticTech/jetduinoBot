@@ -14,7 +14,7 @@
         <mesh filename="package://jetduinobot_description/meshes/chassis.dae" scale="0.1 0.1 0.1"/>
       </geometry>
       <origin rpy="0 0 0" xyz="0 -0.0075 -0.029"/>
-      <material name="silver" />
+      <xacro:insert_block name="material_silver" />
     </visual>
     <collision>
       <geometry>
@@ -46,7 +46,7 @@
       <geometry>
         <mesh filename="package://jetduinobot_description/meshes/battery_large/battery_large.dae"/>
       </geometry>
-      <material name="black" />
+      <xacro:insert_block name="material_black" />
     </visual>
     <collision>
       <geometry>
@@ -80,7 +80,7 @@
       <geometry>
         <mesh filename="package://jetduinobot_description/meshes/wheel/wheel.dae" scale="0.1 0.1 0.1"/>
       </geometry>
-      <material name="black" />
+      <xacro:insert_block name="material_black" />
     </visual>
     <collision>
       <geometry>
@@ -108,7 +108,7 @@
       <geometry>
         <mesh filename="package://jetduinobot_description/meshes/wheel/wheel.dae" scale="0.1 0.1 0.1"/>
       </geometry>
-      <material name="black" />
+      <xacro:insert_block name="material_black" />
     </visual>
     <collision>
       <geometry>
@@ -138,7 +138,7 @@
       <geometry>
         <mesh filename="package://jetduinobot_description/meshes/wheel/wheel.dae" scale="0.1 0.1 0.1"/>
       </geometry>
-      <material name="black" />
+      <xacro:insert_block name="material_black" />
     </visual>
     <collision>
       <geometry>
@@ -166,7 +166,7 @@
       <geometry>
         <mesh filename="package://jetduinobot_description/meshes/wheel/wheel.dae" scale="0.1 0.1 0.1"/>
       </geometry>
-      <material name="black" />
+      <xacro:insert_block name="material_black" />
     </visual>
     <collision>
       <geometry>

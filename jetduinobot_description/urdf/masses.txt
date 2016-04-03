@@ -1,0 +1,7 @@
+Jetduino + Jetson + HD + Arduino + dc_converter: 505 g
+df robot chasis + motor controller: 416 g
+wheel: 30 g
+small battery: 62 g
+large battery: 330 g
+top plate: 112 g
+

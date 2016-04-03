@@ -171,25 +171,25 @@
   </library_lights>
   <library_images>
     <image id="grove_motor_top_png" name="grove_motor_top_png">
-      <init_from>grove_motor_top.png</init_from>
+      <init_from>grove_motor/grove_motor_top.png</init_from>
     </image>
     <image id="grove_motor_side_png_002" name="grove_motor_side_png_002">
-      <init_from>grove_motor_side.png.002.png</init_from>
+      <init_from>grove_motor/grove_motor_side.png</init_from>
     </image>
     <image id="grove_motor_top_png_002" name="grove_motor_top_png_002">
-      <init_from>grove_motor_top.png.002.png</init_from>
+      <init_from>grove_motor/grove_motor_top.png</init_from>
     </image>
     <image id="grove_motor_side_png_001" name="grove_motor_side_png_001">
-      <init_from>grove_motor_side.png.001.png</init_from>
+      <init_from>grove_motor/grove_motor_side.png</init_from>
     </image>
     <image id="grove_motor_top_png_001" name="grove_motor_top_png_001">
-      <init_from>grove_motor_top.png.001.png</init_from>
+      <init_from>grove_motor/grove_motor_top.png</init_from>
     </image>
     <image id="grove_motor_side_png" name="grove_motor_side_png">
-      <init_from>grove_motor_side.png</init_from>
+      <init_from>grove_motor/grove_motor_side.png</init_from>
     </image>
     <image id="grove_motor_bottom_png" name="grove_motor_bottom_png">
-      <init_from>grove_motor_bottom.png</init_from>
+      <init_from>grove_motor/grove_motor_bottom.png</init_from>
     </image>
   </library_images>
   <library_effects>

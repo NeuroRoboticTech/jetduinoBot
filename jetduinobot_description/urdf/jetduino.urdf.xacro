@@ -3,15 +3,15 @@
 
   <xacro:property name="jetduino_length" value="0.2" />
   <xacro:property name="jetduino_width" value="0.185" />
-  <xacro:property name="jetduino_height" value="0.0855" />
+  <xacro:property name="jetduino_height" value="0.065" />
   <xacro:property name="jetduino_mass" value="0.617" />
 
   <link name="jetduino_link">
     <visual>
       <geometry>
-        <mesh filename="package://jetduinobot_description/meshes/jetduino_assembly/jetduino_assembly.dae" scale="0.1 0.1 0.1"/>
+        <mesh filename="package://jetduinobot_description/meshes/jetduino_assembly/jetduino_assembly_short.dae" scale="0.1 0.1 0.1"/>
       </geometry>
-      <origin rpy="0 0 0" xyz="0 0 -0.0375"/>
+      <origin rpy="0 0 0" xyz="0 0.015 -0.026"/>
       <xacro:insert_block name="material_green" />
     </visual>
     <collision>
@@ -30,7 +30,7 @@
   <joint name="jetduino_joint" type="fixed">
     <parent link="base_link"/>
     <child link="jetduino_link"/>
-    <origin rpy="0 0 0" xyz="0 0 0.0725"/>
+    <origin rpy="0 0 0" xyz="0 -0.015 0.062"/>
   </joint>
 
 </robot>

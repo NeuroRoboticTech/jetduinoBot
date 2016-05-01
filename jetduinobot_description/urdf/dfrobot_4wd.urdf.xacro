@@ -106,8 +106,9 @@
   <link name="left_rear_wheel_link">
     <visual>
       <geometry>
-        <mesh filename="package://jetduinobot_description/meshes/wheel/wheel.dae" scale="0.1 0.1 0.1"/>
+        <mesh filename="package://jetduinobot_description/meshes/wheel/wheel.dae" scale="0.1 0.1 0.1" />
       </geometry>
+      <origin rpy="0 3.14159 0" xyz="0 0 0"/>
       <xacro:insert_block name="material_black" />
     </visual>
     <collision>
@@ -127,7 +128,7 @@
     <axis xyz="0 0 1"/>
     <parent link="base_link"/>
     <child link="left_rear_wheel_link"/>
-    <origin rpy="0 1.5708 0" xyz="0.07 -0.0875 -0.017"/>
+    <origin rpy="0 -1.5708 0" xyz="0.07 -0.0875 -0.017"/>
   </joint>
 
 
@@ -166,6 +167,7 @@
       <geometry>
         <mesh filename="package://jetduinobot_description/meshes/wheel/wheel.dae" scale="0.1 0.1 0.1"/>
       </geometry>
+      <origin rpy="0 3.14159 0" xyz="0 0 0"/>
       <xacro:insert_block name="material_black" />
     </visual>
     <collision>
@@ -185,10 +187,15 @@
     <axis xyz="0 0 1"/>
     <parent link="base_link"/>
     <child link="left_front_wheel_link"/>
-    <origin rpy="0 1.5708 0" xyz="0.07 0.0455 -0.017"/>
+    <origin rpy="0 -1.5708 0" xyz="0.07 0.0455 -0.017"/>
   </joint>
 
   <gazebo>
+    <plugin name="joint_state_publisher" filename="libgazebo_ros_joint_state_publisher.so">
+      <jointName>right_rear_wheel_joint, left_rear_wheel_joint, right_front_wheel_joint, 
+                 left_front_wheel_joint</jointName>
+    </plugin>
+
     <plugin name="skid_steer_drive_controller" filename="libgazebo_ros_skid_steer_drive.so">
       <leftFrontJoint>left_front_wheel_joint</leftFrontJoint>
       <rightFrontJoint>right_front_wheel_joint</rightFrontJoint>
